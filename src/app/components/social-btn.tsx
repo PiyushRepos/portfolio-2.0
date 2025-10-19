@@ -1,4 +1,9 @@
-import Linkedin from "@/icons/linkedin";
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import Link from "next/link";
 import React from "react";
 
@@ -13,15 +18,20 @@ function SociallBtn({
 }) {
   return (
     <Link target="_blank" href={href}>
-      <button
-        aria-label={title}
-        title={title}
-        className="relative shadow-[4px_4px_0_0_var(--color-neutral-300)] hover:shadow-[3px_3px_0_0_var(--color-neutral-300)] active:shadow-[0px_0px_0_0_var(--color-neutral-300)] bg-neutral-200 max-w-fit cursor-pointer p-2 rounded-lg dark:bg-neutral-800 dark:shadow-[4px_4px_0_0_var(--color-neutral-700)] dark:hover:shadow-[3px_3px_0_0_var(--color-neutral-700)] dark:active:shadow-[0px_0px_0_0_var(--color-neutral-700)] transition-shadow duration-150"
-      >
-        <span className="text-neutral-500 hover:text-primary font-semibold transition-colors duration-200">
-          {icon ? icon : <Linkedin />}
-        </span>
-      </button>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            size="icon"
+            variant="secondary"
+            className="shadow-[4px_4px_0_0_var(--color-neutral-300)] active:shadow-[0px_0px_0_0_var(--color-neutral-300)] text-neutral-500 hover:text-neutral-600 dark:text-muted-foreground dark:hover:text-accent-foreground dark:shadow-[4px_4px_0_0_var(--color-neutral-700)] dark:active:shadow-[0px_0px_0_0_var(--color-neutral-700)] cursor-pointer hover:scale-105 active:scale-100 transition-transform duration-200 ease-in-out"
+          >
+            {icon}
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>{title}</p>
+        </TooltipContent>
+      </Tooltip>
     </Link>
   );
 }

@@ -26,7 +26,7 @@ export default function Hero() {
       >
         <div>
           <motion.h4 variants={variants} className="font-semibold text-primary">
-            👋 Hey, I&apos;m
+            👋 Hi there,
           </motion.h4>
           <motion.h1
             variants={variants}
@@ -37,7 +37,7 @@ export default function Hero() {
           {/* &amp; */}
           <motion.h2
             variants={variants}
-            className="text-accent font-semibold py-1"
+            className="text-muted-foreground font-semibold py-1"
           >
             Full-Stack Developer (MERN, Next.js), GenAI Engineer
           </motion.h2>
