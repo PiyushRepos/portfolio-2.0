@@ -7,9 +7,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Piyush Kumar | Portfolio",
+  title:
+    "Piyush Kumar | Full-Stack Developer (React, Node.js, Express.js, MongoDB, Next.js, MERN Stack, GenAI Engineer)",
   description:
-    "Portfolio of Piyush Kumar, a passionate software developer specializing in web development and Generataive AI.",
+    "Final-year BCA student and full-stack MERN developer with 3 delivered freelance projects. Passionate about Next.js, Generative AI, productivity tools, and solving real-world problems through code.",
 };
 
 export default function RootLayout({
@@ -18,8 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+    <html suppressHydrationWarning lang="en">
+      <body className={`${inter.className} bg-background antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }

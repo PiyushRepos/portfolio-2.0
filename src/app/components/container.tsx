@@ -8,7 +8,7 @@ type Props = {
 function Container({ children, className = "" }: Props) {
   return (
     <div
-      className={`container h-screen max-w-3xl mx-auto shadow px-4${
+      className={`container h-screen max-w-3xl mx-auto shadow-color px-4 ${
         className ? ` ${className}` : ""
       }`}
     >

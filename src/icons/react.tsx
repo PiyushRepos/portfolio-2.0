@@ -1,11 +1,9 @@
 import { Props } from "./type";
 
-export default function React({ width = 16, height = 16, className }: Props) {
+export default function React({ className = "" }: Props) {
   return (
     <svg
-      width={width}
-      height={height}
-      className={`${className}`}
+      className={`size-5 ${className} `}
       viewBox="0 0 569 512"
       xmlns="http://www.w3.org/1999/xlink"
     >
