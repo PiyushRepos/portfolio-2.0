@@ -40,10 +40,6 @@ export const metadata: Metadata = {
   ],
   applicationName: "Piyush Kumar Portfolio",
   category: "Portfolio",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
   openGraph: {
     title:
       "Piyush Kumar | Full-Stack Developer (React, Node.js, Express.js, MongoDB, Next.js, MERN Stack, GenAI Engineer)",
