@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -21,7 +22,15 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <body className={`${inter.className} bg-background antialiased`}>
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange={false}
+          enableColorScheme={true}
+        >
+          <main>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );

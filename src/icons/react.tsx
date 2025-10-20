@@ -1,9 +1,10 @@
+import { cn } from "@/lib/utils";
 import { Props } from "./type";
 
 export default function React({ className = "" }: Props) {
   return (
     <svg
-      className={`size-5 ${className} `}
+      className={cn(`size-5`, className)}
       viewBox="0 0 569 512"
       xmlns="http://www.w3.org/1999/xlink"
     >

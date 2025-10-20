@@ -21,7 +21,7 @@ function SociallBtn({
       <Tooltip>
         <TooltipTrigger asChild>
           <Button
-            size="icon"
+            size="icon-sm"
             variant="secondary"
             className="shadow-[4px_4px_0_0_var(--color-neutral-300)] active:shadow-[0px_0px_0_0_var(--color-neutral-300)] text-neutral-500 hover:text-neutral-600 dark:text-muted-foreground dark:hover:text-accent-foreground dark:shadow-[4px_4px_0_0_var(--color-neutral-700)] dark:active:shadow-[0px_0px_0_0_var(--color-neutral-700)] cursor-pointer hover:scale-105 active:scale-100 transition-transform duration-200 ease-in-out"
           >

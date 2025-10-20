@@ -1,9 +1,10 @@
 import React from "react";
 import { Props } from "./type";
+import { cn } from "@/lib/utils";
 
 export default function TailwindCss({ className }: Props) {
   return (
-    <svg className={`size-5 ${className}`} fill="none" viewBox="0 0 54 33">
+    <svg className={cn(`size-5`, className)} fill="none" viewBox="0 0 54 33">
       <g clip-path="url(#tailwindcss__a)">
         <path
           fill="#38bdf8"

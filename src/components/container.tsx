@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import React from "react";
 
 type Props = {
@@ -8,9 +9,10 @@ type Props = {
 function Container({ children, className = "" }: Props) {
   return (
     <div
-      className={`container h-screen max-w-3xl mx-auto shadow-color px-4 ${
-        className ? ` ${className}` : ""
-      }`}
+      className={cn(
+        `container h-screen max-w-3xl mx-auto shadow-md shadow-muted px-4`,
+        className
+      )}
     >
       {children}
     </div>

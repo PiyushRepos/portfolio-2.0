@@ -3,7 +3,8 @@ import Github from "@/icons/github";
 import Linkedin from "@/icons/linkedin";
 import Twitter from "@/icons/twitter";
 import { motion, Variants } from "motion/react";
-import SociallBtn from "../social-btn";
+import SociallBtn from "@/components/social-btn";
+import ThemeToggleer from "../theme-toggle";
 
 const variants: Variants = {
   hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
@@ -11,13 +12,31 @@ const variants: Variants = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.6, staggerChildren: 0.1 },
+    transition: { duration: 0.6, staggerChildren: 0.15 },
   },
 };
 
+const socialLinks = [
+  {
+    icon: <Linkedin />,
+    title: "Linkedin",
+    href: "https://www.linkedin.com/in/piyushh04/",
+  },
+  {
+    icon: <Github />,
+    title: "Github",
+    href: "https://github.com/piyushRepos",
+  },
+  {
+    icon: <Twitter />,
+    title: "Twitter/X",
+    href: "https://x.com/_PiyushDev",
+  },
+];
+
 export default function Hero() {
   return (
-    <section className="py-10">
+    <section className="pt-10">
       <motion.div
         viewport={{ once: true }}
         variants={variants}
@@ -25,16 +44,21 @@ export default function Hero() {
         whileInView="visible"
       >
         <div>
-          <motion.h4 variants={variants} className="font-semibold text-primary">
-            👋 Hi there,
-          </motion.h4>
+          <div className="flex justify-between items-center w-full">
+            <motion.h4
+              variants={variants}
+              className="font-semibold text-primary"
+            >
+              👋 Hi there, I&apos;m
+            </motion.h4>
+            <ThemeToggleer />
+          </div>
           <motion.h1
             variants={variants}
-            className="text-primary font-extrabold text-4xl py-2 md:text-5xl lg:text-6xl"
+            className="text-primary font-extrabold text-4xl py-2 md:text-5xl lg:text-6xl relative"
           >
             Piyush Kumar
           </motion.h1>
-          {/* &amp; */}
           <motion.h2
             variants={variants}
             className="text-muted-foreground font-semibold py-1"
@@ -51,22 +75,10 @@ export default function Hero() {
           ideas into real, working products. Currently, I&apos;m exploring{" "}
           <strong>Generative AI</strong> to build smarter web experiences.
         </motion.p>
-        <motion.div variants={variants} className="mt-4 space-x-4">
-          <SociallBtn
-            icon={<Linkedin />}
-            title="Linkedin"
-            href="https://www.linkedin.com/in/piyushh04/"
-          />
-          <SociallBtn
-            icon={<Github />}
-            title="Github"
-            href="https://github.com/piyushRepos"
-          />
-          <SociallBtn
-            icon={<Twitter />}
-            title="Twitter/X"
-            href="https://x.com/_PiyushDev"
-          />
+        <motion.div variants={variants} className="mt-4 space-x-5">
+          {socialLinks.map(({ title, icon, href }) => (
+            <SociallBtn key={title} icon={icon} title={title} href={href} />
+          ))}
         </motion.div>
       </motion.div>
     </section>
