@@ -1,9 +1,9 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Raleway } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const raleway = Raleway({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html suppressHydrationWarning lang="en">
-      <body className={`${inter.className} bg-background antialiased`}>
+      <body className={`${raleway.className} bg-background antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

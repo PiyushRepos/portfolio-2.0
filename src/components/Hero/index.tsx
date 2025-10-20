@@ -5,6 +5,8 @@ import Twitter from "@/icons/twitter";
 import { motion, Variants } from "motion/react";
 import SociallBtn from "@/components/social-btn";
 import ThemeToggleer from "../theme-toggle";
+import { Button } from "../ui/button";
+import File from "@/icons/file";
 
 const variants: Variants = {
   hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
@@ -44,10 +46,10 @@ export default function Hero() {
         whileInView="visible"
       >
         <div>
-          <div className="flex justify-between items-center w-full">
+          <div className="flex w-full items-center justify-between">
             <motion.h4
               variants={variants}
-              className="font-semibold text-primary"
+              className="text-primary font-semibold"
             >
               👋 Hi there, I&apos;m
             </motion.h4>
@@ -55,18 +57,21 @@ export default function Hero() {
           </div>
           <motion.h1
             variants={variants}
-            className="text-primary font-extrabold text-4xl py-2 md:text-5xl lg:text-6xl relative"
+            className="text-primary relative py-2 text-4xl font-extrabold md:text-5xl lg:text-6xl"
           >
             Piyush Kumar
           </motion.h1>
           <motion.h2
             variants={variants}
-            className="text-muted-foreground font-semibold py-1"
+            className="text-muted-foreground py-1 font-semibold"
           >
             Full-Stack Developer (MERN, Next.js), GenAI Engineer
           </motion.h2>
         </div>
-        <motion.p variants={variants} className="text-primary py-2 max-w-2xl">
+        <motion.p
+          variants={variants}
+          className="text-primary max-w-2xl py-2 leading-relaxed"
+        >
           I&apos;m a <strong>final-year BCA student</strong> and{" "}
           <strong>Full-Stack Developer</strong> who loves building clean,
           scalable web apps using <strong>MERN</strong> &{" "}
@@ -75,11 +80,75 @@ export default function Hero() {
           ideas into real, working products. Currently, I&apos;m exploring{" "}
           <strong>Generative AI</strong> to build smarter web experiences.
         </motion.p>
-        <motion.div variants={variants} className="mt-4 space-x-5">
+        <motion.div variants={variants} className="mt-3 space-x-5">
           {socialLinks.map(({ title, icon, href }) => (
             <SociallBtn key={title} icon={icon} title={title} href={href} />
           ))}
         </motion.div>
+
+        <motion.div variants={variants} className="mt-8 space-x-5">
+          <Button
+            variant="outline"
+            className="cursor-pointer shadow-md transition-transform hover:scale-105"
+          >
+            <span>
+              <File className="size-4 rotate-6" />
+            </span>
+            Get In Touch
+          </Button>
+          <Button className="cursor-pointer shadow-md transition-transform hover:scale-105 hover:rotate-2">
+            <span>
+              <File className="size-4 rotate-6" />
+            </span>
+            Resume
+          </Button>
+        </motion.div>
+        <div className="text-muted-foreground my-4 text-sm leading-relaxed font-semibold">
+          <motion.p>
+            {"✨ Learning. Building. Shipping.".split("").map((char, index) => {
+              if (char === " ") {
+                return <span key={index}>&nbsp;</span>;
+              }
+              return (
+                <motion.span
+                  initial={{ opacity: 0, y: 10, filter: "blur(10px)" }}
+                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  transition={{
+                    duration: 1,
+                    delay: index * 0.05,
+                  }}
+                  viewport={{ once: true }}
+                  key={index}
+                >
+                  {char}
+                </motion.span>
+              );
+            })}
+          </motion.p>
+          <motion.p>
+            {"📌 Open to Internships & SDE Roles."
+              .split("")
+              .map((char, index) => {
+                if (char === " ") {
+                  return <span key={index}>&nbsp;</span>;
+                }
+                return (
+                  <motion.span
+                    initial={{ opacity: 0, y: 10, filter: "blur(10px)" }}
+                    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    transition={{
+                      duration: 1,
+                      delay: index * 0.05,
+                    }}
+                    viewport={{ once: true }}
+                    key={index}
+                  >
+                    {char}
+                  </motion.span>
+                );
+              })}
+          </motion.p>
+        </div>
       </motion.div>
     </section>
   );
