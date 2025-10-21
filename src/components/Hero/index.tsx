@@ -1,12 +1,12 @@
 "use client";
+import SociallBtn from "@/components/social-btn";
 import Github from "@/icons/github";
 import Linkedin from "@/icons/linkedin";
 import Twitter from "@/icons/twitter";
+import { FileText } from "lucide-react";
 import { motion, Variants } from "motion/react";
-import SociallBtn from "@/components/social-btn";
 import ThemeToggleer from "../theme-toggle";
 import { Button } from "../ui/button";
-import File from "@/icons/file";
 
 const variants: Variants = {
   hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
@@ -70,7 +70,7 @@ export default function Hero() {
         </div>
         <motion.p
           variants={variants}
-          className="text-primary max-w-2xl py-2 leading-relaxed"
+          className="text-primary max-w-2xl py-2 leading-relaxed text-pretty"
         >
           I&apos;m a <strong>final-year BCA student</strong> and{" "}
           <strong>Full-Stack Developer</strong> who loves building clean,
@@ -86,25 +86,25 @@ export default function Hero() {
           ))}
         </motion.div>
 
-        <motion.div variants={variants} className="mt-8 space-x-5">
+        <motion.div
+          variants={variants}
+          className="mt-8 flex items-center space-x-5"
+        >
+          <Button className="cursor-pointer shadow-md transition-transform hover:scale-105 hover:rotate-2">
+            <span>
+              <FileText className="size-4 rotate-6" />
+            </span>
+            Resume
+          </Button>
           <Button
             variant="outline"
             className="cursor-pointer shadow-md transition-transform hover:scale-105"
           >
-            <span>
-              <File className="size-4 rotate-6" />
-            </span>
             Get In Touch
-          </Button>
-          <Button className="cursor-pointer shadow-md transition-transform hover:scale-105 hover:rotate-2">
-            <span>
-              <File className="size-4 rotate-6" />
-            </span>
-            Resume
           </Button>
         </motion.div>
         <div className="text-muted-foreground my-4 text-sm leading-relaxed font-semibold">
-          <motion.p>
+          <p>
             {"✨ Learning. Building. Shipping.".split("").map((char, index) => {
               if (char === " ") {
                 return <span key={index}>&nbsp;</span>;
@@ -114,8 +114,8 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 10, filter: "blur(10px)" }}
                   whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   transition={{
-                    duration: 1,
-                    delay: index * 0.05,
+                    duration: 0.8,
+                    delay: index * 0.03,
                   }}
                   viewport={{ once: true }}
                   key={index}
@@ -124,8 +124,8 @@ export default function Hero() {
                 </motion.span>
               );
             })}
-          </motion.p>
-          <motion.p>
+          </p>
+          <p>
             {"📌 Open to Internships & SDE Roles."
               .split("")
               .map((char, index) => {
@@ -137,8 +137,8 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 10, filter: "blur(10px)" }}
                     whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                     transition={{
-                      duration: 1,
-                      delay: index * 0.05,
+                      duration: 0.8,
+                      delay: index * 0.03,
                     }}
                     viewport={{ once: true }}
                     key={index}
@@ -147,7 +147,7 @@ export default function Hero() {
                   </motion.span>
                 );
               })}
-          </motion.p>
+          </p>
         </div>
       </motion.div>
     </section>

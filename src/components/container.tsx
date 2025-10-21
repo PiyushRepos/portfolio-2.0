@@ -10,8 +10,8 @@ function Container({ children, className = "" }: Props) {
   return (
     <div
       className={cn(
-        `container h-screen max-w-3xl mx-auto shadow-md shadow-muted px-4`,
-        className
+        `shadow-muted container mx-auto min-h-screen max-w-3xl space-y-12 px-4 pb-4 shadow-md`,
+        className,
       )}
     >
       {children}

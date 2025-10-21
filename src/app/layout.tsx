@@ -1,9 +1,9 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
-import { Raleway } from "next/font/google";
+import { Rubik } from "next/font/google";
 import "./globals.css";
 
-const raleway = Raleway({
+const rubik = Rubik({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
 });
@@ -38,6 +38,12 @@ export const metadata: Metadata = {
     "TypeScript",
     "Portfolio",
     "Software Engineer",
+    "Web Applications",
+    "Portfolio inspiration",
+    "Piyush Dev",
+    "Piyush Portfolio",
+    "piyus.me",
+    "piyushh04",
   ],
   applicationName: "Piyush Kumar Portfolio",
   category: "Portfolio",
@@ -51,8 +57,6 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://piyus.me/og-image.png",
-        width: 1200,
-        height: 630,
         alt: "Piyush Kumar Portfolio",
       },
     ],
@@ -68,7 +72,7 @@ export default function RootLayout({
 }>) {
   return (
     <html suppressHydrationWarning lang="en">
-      <body className={`${raleway.className} bg-background antialiased`}>
+      <body className={`${rubik.className} bg-background antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
