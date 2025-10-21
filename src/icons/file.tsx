@@ -1,6 +1,5 @@
-import React from "react";
-import { Props } from "./type";
 import { cn } from "@/lib/utils";
+import { Props } from "./type";
 
 export default function File({ className }: Props) {
   return (
@@ -15,8 +14,8 @@ export default function File({ className }: Props) {
       strokeLinecap="round"
       strokeLinejoin="round"
       className={cn(
-        `lucide lucide-linkedin-icon lucide-linkedin size-5 font-semibold`,
-        className
+        `lucide lucide-linkedin-icon lucide-linkedin size-6 font-semibold`,
+        className,
       )}
     >
       <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />

@@ -1,7 +1,7 @@
 "use client";
 import SociallBtn from "@/components/social-btn";
-import Github from "@/icons/github";
-import Linkedin from "@/icons/linkedin";
+import Github from "@/icons/Github";
+import Linkedin from "@/icons/Linkedin";
 import Twitter from "@/icons/twitter";
 import { FileText } from "lucide-react";
 import { motion, Variants } from "motion/react";
@@ -36,6 +36,11 @@ const socialLinks = [
   },
 ];
 
+const texts = [
+  "✨ Learning. Building. Shipping.",
+  "📌 Open to Internships & SDE Roles.",
+];
+
 export default function Hero() {
   return (
     <section className="pt-10">
@@ -57,7 +62,7 @@ export default function Hero() {
           </div>
           <motion.h1
             variants={variants}
-            className="text-primary relative py-2 text-4xl font-extrabold md:text-5xl lg:text-6xl"
+            className="text-primary py-2 text-4xl font-extrabold md:text-5xl lg:text-6xl"
           >
             Piyush Kumar
           </motion.h1>
@@ -70,7 +75,7 @@ export default function Hero() {
         </div>
         <motion.p
           variants={variants}
-          className="text-primary max-w-2xl py-2 leading-relaxed text-pretty"
+          className="text-accent-foreground max-w-2xl py-2 leading-relaxed text-pretty"
         >
           I&apos;m a <strong>final-year BCA student</strong> and{" "}
           <strong>Full-Stack Developer</strong> who loves building clean,
@@ -105,7 +110,7 @@ export default function Hero() {
         </motion.div>
         <div className="text-muted-foreground my-4 text-sm leading-relaxed font-semibold">
           <p>
-            {"✨ Learning. Building. Shipping.".split("").map((char, index) => {
+            {texts[0].split("").map((char, index) => {
               if (char === " ") {
                 return <span key={index}>&nbsp;</span>;
               }
@@ -126,27 +131,25 @@ export default function Hero() {
             })}
           </p>
           <p>
-            {"📌 Open to Internships & SDE Roles."
-              .split("")
-              .map((char, index) => {
-                if (char === " ") {
-                  return <span key={index}>&nbsp;</span>;
-                }
-                return (
-                  <motion.span
-                    initial={{ opacity: 0, y: 10, filter: "blur(10px)" }}
-                    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                    transition={{
-                      duration: 0.8,
-                      delay: index * 0.03,
-                    }}
-                    viewport={{ once: true }}
-                    key={index}
-                  >
-                    {char}
-                  </motion.span>
-                );
-              })}
+            {texts[1].split("").map((char, index) => {
+              if (char === " ") {
+                return <span key={index}>&nbsp;</span>;
+              }
+              return (
+                <motion.span
+                  initial={{ opacity: 0, y: 10, filter: "blur(10px)" }}
+                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  transition={{
+                    duration: 0.8,
+                    delay: index * 0.03,
+                  }}
+                  viewport={{ once: true }}
+                  key={index}
+                >
+                  {char}
+                </motion.span>
+              );
+            })}
           </p>
         </div>
       </motion.div>
