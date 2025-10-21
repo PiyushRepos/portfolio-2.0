@@ -1,8 +1,8 @@
 "use client";
 import SociallBtn from "@/components/social-btn";
-import Github from "@/icons/Github";
-import Linkedin from "@/icons/Linkedin";
-import Twitter from "@/icons/twitter";
+import Github from "@/components/icons/Github";
+import Linkedin from "@/components/icons/Linkedin";
+import Twitter from "@/components/icons/twitter";
 import { FileText } from "lucide-react";
 import { motion, Variants } from "motion/react";
 import ThemeToggleer from "../theme-toggle";

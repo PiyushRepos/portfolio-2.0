@@ -1,4 +1,4 @@
-import Github from "@/icons/Github";
+import Github from "@/components/icons/Github";
 import { cn } from "@/lib/utils";
 import { Globe } from "lucide-react";
 import Image from "next/image";

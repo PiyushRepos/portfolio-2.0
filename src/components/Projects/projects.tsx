@@ -1,22 +1,21 @@
-import NodeJs from "@/icons/Nodejs";
-import Expressjs from "@/icons/Expressjs";
-import MongoDB from "@/icons/MongoDB";
-import TailwindCss from "@/icons/Tailwindcss";
-import JWT from "@/icons/JWT";
-import Zod from "@/icons/Zod";
-import NextJs from "@/icons/Nextjs";
-import Gemini from "@/icons/Gemini";
-import TypeScript from "@/icons/TypeScript";
-import Shadcn from "@/icons/Shadcn";
-import Vercel from "@/icons/Vercel";
-import JavaScript from "@/icons/JavaScript";
-import Firebase from "@/icons/Firebase";
-import { JSX } from "react";
-import React from "@/icons/Reactjs";
+import NodeJs from "@/components/icons/Nodejs";
+import Expressjs from "@/components/icons/Expressjs";
+import MongoDB from "@/components/icons/MongoDB";
+import TailwindCss from "@/components/icons/Tailwindcss";
+import JWT from "@/components/icons/JWT";
+import Zod from "@/components/icons/Zod";
+import NextJs from "@/components/icons/Nextjs";
+import Gemini from "@/components/icons/Gemini";
+import TypeScript from "@/components/icons/TypeScript";
+import Shadcn from "@/components/icons/Shadcn";
+import Vercel from "@/components/icons/Vercel";
+import JavaScript from "@/components/icons/JavaScript";
+import Firebase from "@/components/icons/Firebase";
+import React from "@/components/icons/Reactjs";
 
 type technology = {
   name: string;
-  icon: JSX.Element;
+  icon: React.ReactNode;
 };
 
 export interface Project {
