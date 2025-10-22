@@ -75,10 +75,8 @@ export default function RootLayout({
       <body className={`${rubik.className} bg-background antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem
+          defaultTheme="light"
           disableTransitionOnChange={false}
-          enableColorScheme={true}
         >
           <main>{children}</main>
         </ThemeProvider>

@@ -10,7 +10,7 @@ function Container({ children, className = "" }: Props) {
   return (
     <div
       className={cn(
-        `shadow-muted container mx-auto min-h-screen max-w-3xl space-y-12 px-4 pb-4 shadow-md`,
+        `shadow-muted container mx-auto min-h-screen max-w-3xl space-y-12 overflow-x-hidden px-4 pb-4 shadow-md`,
         className,
       )}
     >

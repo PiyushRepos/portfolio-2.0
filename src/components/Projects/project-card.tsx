@@ -20,7 +20,7 @@ function ProjectCard({
   technologies = [],
 }: Props) {
   return (
-    <div className="border-muted bg-background mb-4 flex cursor-pointer flex-col overflow-hidden rounded-lg border shadow transition-transform duration-300 hover:scale-[1.02]">
+    <div className="border-muted bg-background mb-4 flex cursor-pointer flex-col overflow-hidden rounded-lg border shadow">
       <div className="object-cover">
         <Image
           src={imageSrc}

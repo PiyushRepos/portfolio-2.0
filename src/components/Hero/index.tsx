@@ -14,7 +14,7 @@ const variants: Variants = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.6, staggerChildren: 0.15 },
+    transition: { duration: 0.5, staggerChildren: 0.15 },
   },
 };
 
@@ -43,7 +43,7 @@ const texts = [
 
 export default function Hero() {
   return (
-    <section className="pt-10">
+    <section className="pt-8">
       <motion.div
         viewport={{ once: true }}
         variants={variants}
@@ -119,7 +119,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 10, filter: "blur(10px)" }}
                   whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   transition={{
-                    duration: 0.8,
+                    duration: 0.5,
                     delay: index * 0.03,
                   }}
                   viewport={{ once: true }}
@@ -140,7 +140,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 10, filter: "blur(10px)" }}
                   whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   transition={{
-                    duration: 0.8,
+                    duration: 0.5,
                     delay: index * 0.03,
                   }}
                   viewport={{ once: true }}
