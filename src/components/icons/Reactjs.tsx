@@ -4,7 +4,7 @@ import { Props } from "./type";
 export default function React({ className = "" }: Props) {
   return (
     <svg
-      className={cn(`size-6`, className)}
+      className={cn(`size-5`, className)}
       viewBox="0 0 569 512"
       xmlns="http://www.w3.org/1999/xlink"
     >

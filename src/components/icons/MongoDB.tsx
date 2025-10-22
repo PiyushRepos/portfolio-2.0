@@ -3,7 +3,7 @@ import { Props } from "./type";
 
 export default function MongoDB({ className }: Props) {
   return (
-    <svg viewBox="0 0 128 128" className={cn("size-6", className)}>
+    <svg viewBox="0 0 128 128" className={cn("size-5", className)}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

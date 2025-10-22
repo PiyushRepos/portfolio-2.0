@@ -1,11 +1,10 @@
 "use client";
-import SociallBtn from "@/components/social-btn";
 import Github from "@/components/icons/Github";
 import Linkedin from "@/components/icons/Linkedin";
 import Twitter from "@/components/icons/twitter";
+import SociallBtn from "@/components/social-btn";
 import { FileText } from "lucide-react";
 import { motion, Variants } from "motion/react";
-import ThemeToggleer from "../theme-toggle";
 import { Button } from "../ui/button";
 
 const variants: Variants = {
@@ -43,7 +42,7 @@ const texts = [
 
 export default function Hero() {
   return (
-    <section className="pt-8">
+    <section className="pt-18 pb-10">
       <motion.div
         viewport={{ once: true }}
         variants={variants}
@@ -58,7 +57,6 @@ export default function Hero() {
             >
               👋 Hi there, I&apos;m
             </motion.h4>
-            <ThemeToggleer />
           </div>
           <motion.h1
             variants={variants}

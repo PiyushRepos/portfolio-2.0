@@ -14,7 +14,7 @@ export default function File({ className }: Props) {
       strokeLinecap="round"
       strokeLinejoin="round"
       className={cn(
-        `lucide lucide-linkedin-icon lucide-linkedin size-6 font-semibold`,
+        `lucide lucide-linkedin-icon lucide-linkedin size-5 font-semibold`,
         className,
       )}
     >

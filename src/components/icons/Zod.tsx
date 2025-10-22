@@ -7,7 +7,7 @@ export default function Zod({ className }: Props) {
     <svg
       xmlns="http://www.w3.org/1999/xlink"
       viewBox="0 0 256 203"
-      className={cn("size-6", className)}
+      className={cn("size-5", className)}
     >
       <path
         fill="#18253F"

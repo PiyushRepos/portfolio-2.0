@@ -6,7 +6,7 @@ export default function JWT({ className }: Props) {
     <svg
       viewBox="0 0 256 257"
       preserveAspectRatio="xMidYMid"
-      className={cn("size-6", className)}
+      className={cn("size-5", className)}
     >
       <path
         fill="#FFF"

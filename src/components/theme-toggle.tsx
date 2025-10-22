@@ -5,7 +5,7 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 
-function ThemeToggleer() {
+function ThemeToggler() {
   const { setTheme, theme } = useTheme();
 
   const toggleTheme = () => {
@@ -30,4 +30,4 @@ function ThemeToggleer() {
   );
 }
 
-export default ThemeToggleer;
+export default ThemeToggler;
