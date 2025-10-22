@@ -9,11 +9,11 @@ import React from "react";
 
 function SociallBtn({
   icon,
-  title = "",
+  name = "",
   href = "#",
 }: {
   icon?: React.ReactNode;
-  title?: string;
+  name?: string;
   href?: string;
 }) {
   return (
@@ -29,7 +29,7 @@ function SociallBtn({
           </Button>
         </TooltipTrigger>
         <TooltipContent>
-          <p>{title}</p>
+          <p>{name}</p>
         </TooltipContent>
       </Tooltip>
     </Link>

@@ -2,6 +2,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
 import "./globals.css";
+import { ReactLenis } from "@/lib/lenis";
 
 const rubik = Rubik({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
@@ -75,10 +76,12 @@ export default function RootLayout({
       <body className={`${rubik.className} bg-background antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           disableTransitionOnChange={false}
         >
-          <main>{children}</main>
+          <ReactLenis root options={{ lerp: 0.03, orientation: "vertical" }}>
+            <main>{children}</main>
+          </ReactLenis>
         </ThemeProvider>
       </body>
     </html>
