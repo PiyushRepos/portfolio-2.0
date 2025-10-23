@@ -13,7 +13,7 @@ import JavaScript from "@/components/icons/JavaScript";
 import Firebase from "@/components/icons/Firebase";
 import React from "@/components/icons/Reactjs";
 
-type technology = {
+export type Technology = {
   name: string;
   icon: React.ReactNode;
 };
@@ -24,7 +24,7 @@ export interface Project {
   description: string;
   liveUrl?: string;
   repoUrl?: string;
-  technologies?: technology[];
+  technologies?: Technology[];
   className?: string;
 }
 

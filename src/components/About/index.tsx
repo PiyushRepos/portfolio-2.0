@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 function About() {
   return (
-    <section id="about">
+    <section id="about" className="scroll-mt-20 md:scroll-mt-10">
       <Subheading
         text="About Me"
         upperText="The Human Behind the Code"

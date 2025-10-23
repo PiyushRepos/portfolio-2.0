@@ -1,14 +1,14 @@
 import Github from "@/components/icons/Github";
-import { cn } from "@/lib/utils";
-import { Globe } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { Project as Props } from "./projects";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
+import { Globe } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Project as Props } from "./projects";
 
 function ProjectCard({
   title,
@@ -53,7 +53,7 @@ function ProjectCard({
             </Tooltip>
           </div>
         </div>
-        <p className="leading-tighter text-muted-foreground mt-2 line-clamp-3 text-sm">
+        <p className="leading-tighter text-muted-foreground mt-2 line-clamp-4 text-sm">
           {description}
         </p>
         <div>

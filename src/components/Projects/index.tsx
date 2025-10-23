@@ -7,7 +7,7 @@ import { projects } from "./projects";
 
 function Projects() {
   return (
-    <section>
+    <section id="projects" className="scroll-mt-24">
       <Subheading
         text="Projects"
         upperText="Things I&lsquo;ve Built"
