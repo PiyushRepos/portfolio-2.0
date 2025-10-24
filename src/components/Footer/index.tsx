@@ -30,6 +30,16 @@ function Footer() {
           ))}
         </div>
       </div>
+      <p className="mb-2 text-center text-sm text-neutral-500 dark:text-neutral-400">
+        Design and Developed by{" "}
+        <Link
+          href="https://x.com/_PiyushDev"
+          className="text-muted-foreground underline"
+          target="_blank"
+        >
+          Piyush Kumar
+        </Link>
+      </p>
       <p className="text-center text-sm text-neutral-500 dark:text-neutral-400">
         &copy; {new Date().getFullYear()} Piyush Kumar. All rights reserved.
       </p>

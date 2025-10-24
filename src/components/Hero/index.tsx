@@ -4,6 +4,7 @@ import { FileText } from "lucide-react";
 import { motion, Variants } from "motion/react";
 import { Button } from "../ui/button";
 import { socialLinks } from "./links";
+import Link from "next/link";
 
 const variants: Variants = {
   hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
@@ -73,18 +74,25 @@ export default function Hero() {
           variants={variants}
           className="mt-8 flex items-center space-x-5"
         >
-          <Button className="cursor-pointer shadow-md transition-transform hover:scale-105 hover:rotate-2">
-            <span>
-              <FileText className="size-4 rotate-6" />
-            </span>
-            Resume
-          </Button>
-          <Button
+          <Link
+            href="/Piyush_Kumar_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className="cursor-pointer shadow-md transition-transform hover:scale-105 hover:rotate-2">
+              <span>
+                <FileText className="size-4 rotate-6" />
+              </span>
+              Resume
+            </Button>
+          </Link>
+          {/* Have to create a sepreate page */}
+          {/* <Button
             variant="outline"
             className="cursor-pointer shadow-md transition-transform hover:scale-105"
           >
             Get In Touch
-          </Button>
+          </Button> */}
         </motion.div>
         <div className="text-muted-foreground my-4 text-sm leading-relaxed font-semibold">
           <p>
