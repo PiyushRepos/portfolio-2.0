@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
 import "./globals.css";
 import { ReactLenis } from "@/lib/lenis";
+import Progress from "@/components/progress";
 
 const rubik = Rubik({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
@@ -80,7 +81,10 @@ export default function RootLayout({
           disableTransitionOnChange={false}
         >
           <ReactLenis root options={{ lerp: 0.085, orientation: "vertical" }}>
-            <main>{children}</main>
+            <main>
+              <Progress />
+              {children}
+            </main>
           </ReactLenis>
         </ThemeProvider>
       </body>

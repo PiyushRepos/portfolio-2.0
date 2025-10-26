@@ -3,7 +3,7 @@ import { Props } from "./type";
 
 export default function TailwindCss({ className }: Props) {
   return (
-    <svg className={cn(`56`, className)} fill="none" viewBox="0 0 54 33">
+    <svg className={cn(`size-5`, className)} fill="none" viewBox="0 0 54 33">
       <g clipPath="url(#tailwindcss__a)">
         <path
           fill="#38bdf8"

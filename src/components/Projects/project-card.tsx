@@ -61,7 +61,10 @@ function ProjectCard({
             <div className="mt-4 flex flex-wrap gap-2">
               {technologies.map((tech) => (
                 <Tooltip key={tech.name}>
-                  <TooltipTrigger asChild>
+                  <TooltipTrigger
+                    asChild
+                    className="transition-transform duration-150 hover:scale-[1.2] hover:-rotate-6"
+                  >
                     <span>{tech.icon}</span>
                   </TooltipTrigger>
                   <TooltipContent>{tech.name}</TooltipContent>
