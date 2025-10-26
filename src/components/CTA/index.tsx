@@ -15,11 +15,11 @@ function CTA() {
           <Quote size={45} className="rotate-[182deg]" />
         </span>
         <div className="space-y-3">
-          <p className="relative z-10 font-mono font-medium text-pretty text-zinc-600 italic dark:text-zinc-400">
+          <p className="relative z-10 font-mono text-sm font-medium text-pretty text-zinc-600 italic sm:text-base dark:text-zinc-400">
             &ldquo;I may be new to companies, but I&lsquo;m not new to building
             real products.&rdquo;
           </p>
-          <p className="ml-auto w-fit font-mono text-zinc-700 italic dark:text-zinc-300">
+          <p className="ml-auto w-fit font-mono text-sm text-zinc-700 italic sm:text-base dark:text-zinc-300">
             &mdash; Piyush Kumar
           </p>
         </div>

@@ -13,7 +13,7 @@ function Projects() {
         upperText="Things I&lsquo;ve Built"
         icon={<FolderKanban />}
       />
-      <div className="grid grid-cols-1 items-center justify-center gap-4 md:grid-cols-2">
+      <div className="grid grid-cols-1 items-stretch justify-center gap-4 md:grid-cols-2">
         {projects.map((project, index) => (
           <motion.div
             initial={{ opacity: 0, filter: "blur(10px)" }}
@@ -29,6 +29,7 @@ function Projects() {
               liveUrl={project.liveUrl}
               repoUrl={project.repoUrl}
               technologies={project.technologies || []}
+              tags={project.tags}
             />
           </motion.div>
         ))}

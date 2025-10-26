@@ -12,6 +12,7 @@ import Vercel from "@/components/icons/Vercel";
 import JavaScript from "@/components/icons/JavaScript";
 import Firebase from "@/components/icons/Firebase";
 import React from "@/components/icons/Reactjs";
+import Perplexity from "@/components/icons/Perplexity";
 
 export type Technology = {
   name: string;
@@ -25,6 +26,7 @@ export interface Project {
   liveUrl?: string;
   repoUrl?: string;
   technologies?: Technology[];
+  tags?: string[];
   className?: string;
 }
 
@@ -33,7 +35,7 @@ export const projects: Project[] = [
     title: "HireMentis - AI Mock Interview",
     imageSrc: "/hirementis.png",
     description:
-      "HireMentis is a Generative AI-powered mock interview platform designed to help job seekers practice real interview scenarios with a human-like voice agent named Reva. After each session, users receive detailed performance feedback, including question-wise analysis, improvement suggestions, and a structured scorecard, all stored in the user@apos;s profile for future practice. This allows candidates to track progress and become interview-ready with consistent practice.",
+      "HireMentis is a Generative AI mock interview platform designed to help job seekers practice real interview scenarios with a human-like voice agent named Reva. After each session, users receive detailed performance feedback, including question-wise analysis, improvement suggestions, and a structured scorecard, all stored in the user@apos;s profile for future practice. This allows candidates to track progress and become interview-ready with consistent practice.",
     liveUrl: "https://hirementis.site",
     repoUrl: "/#",
     technologies: [
@@ -45,6 +47,31 @@ export const projects: Project[] = [
       { name: "Shadcn UI", icon: <Shadcn /> },
       { name: "Firebase", icon: <Firebase /> },
     ],
+    tags: [
+      "Ongoing",
+      "Personal Project",
+      "GenAI",
+      "Voice Synthesis",
+      "Interview Prep",
+    ],
+  },
+  {
+    title: "SpeakinResearch",
+    imageSrc: "/speakinresearch.png",
+    description:
+      "SpeakinResearch is an AI-powered expert discovery and project matchmaking platform that helps companies find verified professionals such as developers, designers, writers, consultants, mentors, and speakers. Users can explore expert profiles, review portfolios, read feedback, and directly connect with candidates. The platform uses LLM-based smart search, AI profile summaries, and requirement-based ranking to deliver highly accurate expert recommendations. Built using Next.js and Firebase, this project focuses on performance, data security, and smooth user experience.",
+    liveUrl: "",
+    repoUrl: "",
+    technologies: [
+      { name: "Next.js", icon: <NextJs /> },
+      { name: "React.js", icon: <React /> },
+      { name: "Perplexity AI", icon: <Perplexity /> },
+      { name: "JavaScript", icon: <JavaScript /> },
+      { name: "Firebase", icon: <Firebase /> },
+      { name: "TypeScript", icon: <TypeScript /> },
+      { name: "TailwindCSS", icon: <TailwindCss /> },
+    ],
+    tags: ["Freelance", "Web Search API", "Client Project", "Delivered"],
   },
   {
     title: "Inscribes - Blog Platform",
@@ -64,6 +91,7 @@ export const projects: Project[] = [
       { name: "Zod", icon: <Zod /> },
       { name: "Vercel", icon: <Vercel /> },
     ],
+    tags: ["MERN", "Full-Stack", "Authentication", "CRUD", "Personal Project"],
   },
   {
     title: "Baatcheet - Persona Chat App",
@@ -79,6 +107,13 @@ export const projects: Project[] = [
       { name: "TailwindCSS", icon: <TailwindCss /> },
       { name: "Shadcn UI", icon: <Shadcn /> },
       { name: "Vercel", icon: <Vercel /> },
+    ],
+    tags: [
+      "GenAI",
+      "Personalities",
+      "Chatbot",
+      "Personal Project",
+      "Fun Project",
     ],
   },
 ];
