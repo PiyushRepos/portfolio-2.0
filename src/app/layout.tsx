@@ -65,6 +65,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Piyush Kumar | Full-Stack Developer (React, Node.js, Express.js, MongoDB, Next.js, MERN Stack, GenAI Engineer)",
+    description:
+      "Final-year BCA student and full-stack MERN developer with 3 delivered freelance projects. Passionate about Next.js, Generative AI, productivity tools, and solving real-world problems through code.",
+    images: ["https://piyus.me/og-image.png"],
+    creator: "@_PiyushDev",
+  },
 };
 
 export default function RootLayout({
