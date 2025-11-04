@@ -82,8 +82,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning lang="en">
-      <body className={`${rubik.className} bg-background antialiased`}>
+    <html lang="en">
+      <body
+        suppressHydrationWarning
+        className={`${rubik.className} bg-background antialiased`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

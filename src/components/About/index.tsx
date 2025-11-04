@@ -3,6 +3,12 @@ import { VenetianMask } from "lucide-react";
 import Subheading from "../subheading";
 import { motion } from "motion/react";
 
+// I'm a MERN & Next.js developer, building clean, fast, and user-centric web apps. My journey started during my BCA, and ever since then, I have been consistently learning, building, and shipping projects.
+
+// I explored Generative AI through the Hitesh Choudhary & Piyush Garg GenAI cohort, where I built projects like AI mock interviews, persona-based chat systems, RAG apps, chat-with-PDF, terminal cursor, and browser agents. Working at the intersection of Web + AI has helped me think more about solving real problems, not just writing code.
+
+// Currently, I'm focused on backend architecture and building production-grade AI-powered experiences. I am a curious learner-never to give up, actually-seeking a team where I can contribute and grow as a full-stack developer.
+
 function About() {
   return (
     <section id="about" className="scroll-mt-20 md:scroll-mt-10">
@@ -17,10 +23,10 @@ function About() {
           whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.5 }}
         >
-          I&lsquo;m a <strong> MERN & Next.js developer</strong> who loves
-          building clean, fast, and user-focused web apps. My journey started
-          during my BCA, and I&lsquo;ve been consistently learning, building,
-          and shipping projects ever since.
+          I&lsquo;m a <strong> MERN & Next.js developer</strong>, building
+          clean, fast, and user-centric web apps. My journey started during my
+          BCA, and ever since then, I have been consistently learning, building,
+          and shipping projects.
         </motion.p>
         <motion.p
           initial={{ opacity: 0, x: -10, filter: "blur(10px)" }}
@@ -41,10 +47,10 @@ function About() {
           whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Right now, I&lsquo;m focusing on improving backend architecture and
-          building production-grade AI-powered experiences. I&lsquo;m a curious
-          learner with a never-give-up attitude, aiming to join a team where I
-          can contribute, grow, and become a strong full-stack developer.
+          Currently, I focused on backend architecture, building
+          production-grade AI-powered experiences, and DSA learning. I&lsquo;m a
+          curious learner, never to give up, actually—seeking a team where I can
+          contribute and grow as a full-stack developer.
         </motion.p>
       </div>
     </section>

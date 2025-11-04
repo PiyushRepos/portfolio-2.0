@@ -1,6 +1,6 @@
 "use client";
 import SociallBtn from "@/components/social-btn";
-import { FileText } from "lucide-react";
+import { FileText, Mail } from "lucide-react";
 import { motion, Variants } from "motion/react";
 import { Button } from "../ui/button";
 import { socialLinks } from "./links";
@@ -54,7 +54,7 @@ export default function Hero() {
         </div>
         <motion.p
           variants={variants}
-          className="max-w-2xl py-2 leading-relaxed text-pretty text-neutral-600 dark:text-neutral-300"
+          className="font- max-w-2xl py-2 leading-relaxed text-pretty text-neutral-600 dark:text-neutral-300"
         >
           I&apos;m a <strong>final-year BCA student</strong> and{" "}
           <strong>Full-Stack Developer</strong> who loves building clean,
@@ -74,25 +74,28 @@ export default function Hero() {
           variants={variants}
           className="mt-8 flex items-center space-x-5"
         >
-          <Link
-            href="/Piyush_Kumar_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Button className="cursor-pointer shadow-md transition-transform hover:scale-105 hover:rotate-2">
+          <Link href="mailto:piyush2004.dev@gmail.com">
+            <Button
+              variant="default"
+              className="cursor-pointer shadow-md transition-transform hover:scale-105"
+            >
+              <span>
+                <Mail />
+              </span>
+              Email Me
+            </Button>
+          </Link>
+          <Link href="/Piyush_Kumar_Resume.pdf" target="_blank">
+            <Button
+              variant="outline"
+              className="cursor-pointer shadow-md transition-transform hover:scale-105 hover:rotate-1"
+            >
               <span>
                 <FileText className="size-4 rotate-6" />
               </span>
-              Resume
+              Download Resume
             </Button>
           </Link>
-          {/* Have to create a sepreate page */}
-          {/* <Button
-            variant="outline"
-            className="cursor-pointer shadow-md transition-transform hover:scale-105"
-          >
-            Get In Touch
-          </Button> */}
         </motion.div>
         <div className="text-muted-foreground my-4 text-sm leading-relaxed font-semibold">
           <p>
