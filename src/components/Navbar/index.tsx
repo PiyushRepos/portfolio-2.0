@@ -21,7 +21,7 @@ function Navbar() {
           </div>
           <Tooltip>
             <TooltipTrigger asChild>
-              <div className="border-secondary-foreground/50 absolute -right-1 -bottom-1 z-40 h-[8px] w-[8px] animate-pulse rounded-full border bg-green-300" />
+              <div className="absolute -right-0.5 bottom-0 z-40 h-[8px] w-[8px] animate-pulse rounded-full bg-green-300" />
             </TooltipTrigger>
             <TooltipContent>Online</TooltipContent>
           </Tooltip>
