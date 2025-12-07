@@ -83,6 +83,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="22ceaa7c-55b2-48ab-b721-759af5e34fcb"
+        ></script>
+      </head>
       <body
         suppressHydrationWarning
         className={`${rubik.className} bg-background antialiased`}

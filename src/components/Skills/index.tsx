@@ -1,7 +1,7 @@
 "use client";
 
 import { Swords } from "lucide-react";
-import { motion, spring } from "motion/react";
+import { motion } from "motion/react";
 import { useRef } from "react";
 import Subheading from "../subheading";
 import { techIcons } from "../icons";
