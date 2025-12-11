@@ -79,7 +79,7 @@ export const AnimatedThemeToggler = ({
       onClick={toggleTheme}
       className={cn(className)}
       {...props}
-      variant={"ghost"}
+      variant={"link"}
       size={"icon"}
     >
       {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}

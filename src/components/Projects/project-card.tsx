@@ -22,7 +22,7 @@ function ProjectCard({
   tags = [],
 }: Props) {
   return (
-    <div className="border-muted bg-background dark:bg-secondary/40 mb-4 flex h-full cursor-pointer flex-col overflow-hidden rounded-lg border shadow">
+    <div className="border-muted bg-background dark:bg-secondary/40 mb-4 flex h-full cursor-pointer flex-col overflow-hidden rounded-sm border shadow">
       <div className="object-cover">
         <Image
           src={imageSrc}

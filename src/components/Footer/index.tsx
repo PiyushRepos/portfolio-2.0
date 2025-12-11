@@ -9,7 +9,7 @@ import {
 
 function Footer() {
   return (
-    <footer className="bg-background/50 border-secondary-foreground/30 w-full rounded-lg border-t px-6 py-4 shadow dark:border-neutral-700 dark:bg-neutral-900">
+    <footer className="bg-background/50 border-secondary-foreground/30 w-full rounded-sm border-t px-6 py-4 shadow dark:border-neutral-700 dark:bg-neutral-900">
       {/* socials */}
       <div>
         <div className="mb-4 flex items-center justify-center space-x-4">

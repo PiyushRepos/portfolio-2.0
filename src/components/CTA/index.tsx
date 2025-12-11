@@ -9,7 +9,7 @@ function CTA() {
         initial={{ opacity: 0, filter: "blur(4px)" }}
         whileInView={{ opacity: 1, filter: "blur(0px)" }}
         transition={{ duration: 0.35, ease: "easeOut", delay: 0.3 }}
-        className="border-secondary-foreground/30 bg-background/50 relative flex w-full flex-col items-center justify-between gap-4 rounded-lg border border-dashed px-4 py-6 shadow md:flex-row"
+        className="border-secondary-foreground/30 bg-background/50 relative flex w-full flex-col items-center justify-between gap-4 rounded-sm border border-dashed px-4 py-6 shadow md:flex-row"
       >
         <span className="-z-10- absolute top-4 text-lg text-neutral-400/30 dark:text-neutral-300/20">
           <Quote size={45} className="rotate-[182deg]" />

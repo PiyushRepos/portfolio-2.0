@@ -1,7 +1,22 @@
+import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
+import remarkGfm from "remark-gfm";
+
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+  options: {
+    // remarkPlugins: [remarkGfm],
+  },
+});
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
+  images: {
+    remotePatterns: [],
+  },
+  experimental: {
+    mdxRs: true,
+  },
 };
 
-export default nextConfig;
+export default withMDX(nextConfig);

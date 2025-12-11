@@ -39,7 +39,7 @@ function Skills() {
               ease: "easeInOut",
             }}
             className={cn(
-              `bg-secondary border-accent-foreground inline-flex cursor-grab items-center gap-2 rounded-lg border border-dashed px-2 py-1 active:cursor-grabbing`,
+              `bg-secondary border-accent-foreground inline-flex cursor-grab items-center gap-2 rounded-sm border border-dashed px-2 py-1 active:cursor-grabbing`,
               tech.classes,
             )}
           >
