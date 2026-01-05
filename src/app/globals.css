@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -108,6 +109,24 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  /* sugar-high */
+  /* --sh-class: oklch(0.6 0.15 250);
+  --sh-identifier: oklch(0.7 0.05 240);
+  --sh-sign: oklch(0.65 0.08 260);
+  --sh-string: oklch(0.65 0.15 160);
+  --sh-keyword: oklch(0.65 0.2 30);
+  --sh-comment: oklch(0.6 0.02 240);
+  --sh-jsxliterals: oklch(0.7 0.18 280); */
+  --sh-class: #2d5e9d;
+  --sh-identifier: #354150;
+  --sh-sign: #8996a3;
+  --sh-property: #0550ae;
+  --sh-entity: #249a97;
+  --sh-jsxliterals: #6266d1;
+  --sh-string: #00a99a;
+  --sh-keyword: #f47067;
+  --sh-comment: #a19595;
 }
 
 @layer base {
@@ -119,7 +138,37 @@
   }
 }
 
-::view-transition-old(root), ::view-transition-new(root) {
-    animation: none;
-    mix-blend-mode: normal;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold;
+}
+
+ul > li > p {
+  @apply my-0;
+}
+
+.prose pre code {
+  @apply rounded-lg bg-transparent;
+}
+
+.prose pre {
+  @apply rounded-lg bg-transparent p-0;
+}
+/*
+.prose code {
+  @apply rounded-lg px-1 py-0.5;
+}
+
+.prose code span {
+  @apply font-medium;
+} */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }

@@ -1,7 +1,7 @@
 "ues client";
 import { FolderKanban } from "lucide-react";
 import React from "react";
-import { motion } from "motion/react";
+import * as motion from "motion/react-client";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -9,9 +9,10 @@ type Props = {
   text: string;
   upperText?: string;
   className?: string;
+  description?: string;
 };
 
-function Subheading({ text, upperText, icon, className }: Props) {
+function Subheading({ text, upperText, icon, description, className }: Props) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
@@ -26,10 +27,15 @@ function Subheading({ text, upperText, icon, className }: Props) {
       <p className="text-muted-foreground text-left text-sm font-semibold">
         {upperText}
       </p>
-      <h2 className="text-primary mb-2 flex items-center gap-2 text-2xl font-extrabold">
+      <h2 className="text-primary mb-1 flex items-center gap-2 text-2xl font-extrabold">
         <span>{icon ? icon : <FolderKanban />}</span>
         {text}
       </h2>
+      {description && (
+        <p className="text-muted-foreground text-left text-base leading-relaxed">
+          {description}
+        </p>
+      )}
     </motion.div>
   );
 }

@@ -28,9 +28,9 @@ function Navbar() {
         </div>
       </div>
       <div className="text-primary flex items-center gap-4 text-sm font-medium">
-        <Link href={"/"}>Home</Link>
-        <Link href={"#projects"}>Projects</Link>
-        <Link href={"#about"}>About</Link>
+        <Link href={"/blogs"}>Blogs</Link>
+        <Link href={"/#projects"}>Projects</Link>
+        <Link href={"/#about"}>About</Link>
         <ThemeToggler />
       </div>
     </nav>
