@@ -13,6 +13,7 @@ import JavaScript from "@/components/icons/JavaScript";
 import Firebase from "@/components/icons/Firebase";
 import React from "@/components/icons/Reactjs";
 import Perplexity from "@/components/icons/Perplexity";
+import OpenAI from "../icons/OpenAI";
 
 export type Technology = {
   name: string;
@@ -37,7 +38,7 @@ export const projects: Project[] = [
     description:
       "HireMentis is a Generative AI mock interview platform designed to help job seekers practice real interview scenarios with a human-like voice agent named Reva. After each session, users receive detailed performance feedback, including question-wise analysis, improvement suggestions, and a structured scorecard, all stored in the user@apos;s profile for future practice. This allows candidates to track progress and become interview-ready with consistent practice.",
     liveUrl: "https://hirementis.site",
-    repoUrl: "/#",
+    repoUrl: "https://github.com/hirementis-dev/hirementis-frontend",
     technologies: [
       { name: "Next.js", icon: <NextJs /> },
       { name: "React.js", icon: <React /> },
@@ -79,7 +80,7 @@ export const projects: Project[] = [
     description:
       "Inscribes is a full-stack blog platform where users can write, edit, publish, and manage blogs with full authentication and protected routes. It includes a blog listing page, individual blog pages, and a user dashboard with profile updates and CRUD functionality. This was my first major MERN project, where I learned end-to-end app development, auth flows, validation, and UI/UX basics.",
     liveUrl: "https://inscribes.vercel.app",
-    repoUrl: "/#",
+    repoUrl: "https://github.com/piyushRepos/inscribe-backend",
     technologies: [
       { name: "React.js", icon: <React /> },
       { name: "JavaScript", icon: <JavaScript /> },
@@ -99,7 +100,7 @@ export const projects: Project[] = [
     description:
       "Baatcheet is a fun AI persona-based chat app where users can talk to their favorite mentors and creators. It simulates real personalities and their unique speaking styles, making conversations feel natural, familiar, and enjoyable. Currently, users can chat with replicas of Hitesh Choudhary and Piyush Garg, with more personas coming soon.",
     liveUrl: "https://baatcheet-ecru.vercel.app/",
-    repoUrl: "/#",
+    repoUrl: "https://github.com/piyushRepos/baatcheet",
     technologies: [
       { name: "Next.js", icon: <NextJs /> },
       { name: "TypeScript", icon: <TypeScript /> },
