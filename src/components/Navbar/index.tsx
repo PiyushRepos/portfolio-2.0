@@ -5,7 +5,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 function Navbar() {
   return (
-    <nav className="bg-background/30 border-secondary-foreground/20 fixed top-2 right-0 left-0 z-40 mx-auto flex max-w-3xl items-center justify-between rounded-2xl border px-4 py-2 shadow-md backdrop-blur-3xl">
+    <nav className="bg-background/30 border-secondary-foreground/20 fixed top-2 right-0 left-0 z-40 mx-auto flex max-w-3xl items-center justify-between rounded-2xl border px-4 py-2 shadow-md">
       <div>
         <div className="relative h-10 w-10 rounded-md select-none">
           <div className="relative z-10">

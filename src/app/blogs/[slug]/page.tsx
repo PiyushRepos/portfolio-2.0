@@ -1,7 +1,52 @@
 import { CustomMDX } from "@/components/custom-mdx";
-import { getBlogBySlug } from "@/lib/blog";
+import {
+  calculateReadingTime,
+  getAllBlogSlugs,
+  getBlogBySlug,
+} from "@/lib/blog";
 import Image from "next/image";
-import React from "react";
+
+export async function generateStaticParams() {
+  const slugs = await getAllBlogSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const blog = await getBlogBySlug(slug);
+
+  if (!blog) {
+    return {};
+  }
+
+  return {
+    title: blog.frontMatter.title,
+    description: blog.frontMatter.description,
+    authors: { name: blog.frontMatter.author },
+    keywords: blog.frontMatter.tags,
+    creator: blog.frontMatter.author,
+    referrer: "origin",
+    metadataBase: new URL("https://piyus.com"),
+    openGraph: {
+      title: blog.frontMatter.title,
+      description: blog.frontMatter.description,
+      images: blog.frontMatter.coverImage
+        ? [
+            {
+              url: blog.frontMatter.coverImage,
+              width: 1280,
+              height: 720,
+              alt: blog.frontMatter.title,
+            },
+          ]
+        : undefined,
+    },
+  };
+}
 
 export default async function BlogContentPage({
   params,
@@ -15,6 +60,8 @@ export default async function BlogContentPage({
     return <div className="text-muted-foreground">Blog post not found.</div>;
   }
 
+  const readingTime = calculateReadingTime(blog.content);
+
   return (
     <div>
       <div className="mb-8 text-center">
@@ -26,6 +73,8 @@ export default async function BlogContentPage({
               day: "numeric",
             })}
           </time>
+          <span>•</span>
+          <span>{readingTime} min read</span>
           <span>•</span>
           <span>{blog.frontMatter.author}</span>
         </div>

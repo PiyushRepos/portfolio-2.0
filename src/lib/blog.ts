@@ -84,8 +84,38 @@ export async function getBlogBySlug(slug: string): Promise<Post | null> {
 
     const { data, content } = matter(fileContents);
 
+    if (data.draft === true) {
+      console.log(`Blog post "${data.title}" is marked as draft. Skipping.`);
+      return null;
+    }
+
     return { frontMatter: data as FrontMatter, content };
   } catch (error) {
     return null;
   }
+}
+
+export async function getAllBlogSlugs(): Promise<string[]> {
+  try {
+    const fileNames = await readDirectory(blogsDirectory);
+
+    const slugs = fileNames
+      .filter((fileName) => fileName.endsWith(".mdx"))
+      .map((fileName) => fileName.replace(/\.mdx$/, ""));
+
+    return slugs;
+  } catch (error) {
+    return [];
+  }
+}
+
+export function calculateReadingTime(content: string): number {
+  const wordsPerMinute = 200;
+
+  const words = content
+    .trim()
+    .split(" ")
+    .filter((word) => word.length > 0).length;
+
+  return Math.ceil(words / wordsPerMinute);
 }

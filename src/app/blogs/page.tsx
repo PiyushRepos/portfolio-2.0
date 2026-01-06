@@ -5,7 +5,32 @@ import { getAllBlogs } from "@/lib/blog";
 import { NotebookText } from "lucide-react";
 import { Variants } from "motion";
 import * as motion from "motion/react-client";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Blog Posts - Piyush Kumar",
+  description:
+    "Insights, tutorials, and stories from my journey as a full-stack developer.",
+  keywords: [
+    "blog",
+    "full-stack development",
+    "programming",
+    "web development",
+    "tutorials",
+    "coding",
+    "software engineering",
+    "javascript",
+    "react",
+    "next.js",
+    "typescript",
+    "developer insights",
+  ],
+  authors: { name: "Piyush Kumar" },
+  creator: "Piyush Kumar",
+  referrer: "origin",
+  metadataBase: new URL("https://piyus.com"),
+};
 
 export default async function BlogsPage() {
   const blogs = await getAllBlogs();

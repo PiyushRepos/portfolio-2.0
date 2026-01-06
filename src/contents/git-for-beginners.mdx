@@ -1,11 +1,11 @@
 ---
 title: Git for Beginners
 description: A comprehensive guide to getting started with Git, covering installation, basic commands, and workflows
-tags: ['Git', 'Version Control', 'Beginner Guide']
+tags: ["Git", "Version Control", "Beginner Guide"]
 slug: git-for-beginners
 date: 2024-06-15
 author: Piyush Kumar
-coverImage: /images/git-for-beginners-cover.png
+coverImage: /blogs/git-for-beginners-cover.png
 draft: false
 ---
 
@@ -14,13 +14,6 @@ draft: false
 Git is usually `console.log` the first tool developers learn after writing a few lines of code and for good reason. Once code starts changing, the real challenge isn’t writing it, but managing those changes safely and consistently.
 
 This article introduces Git from a beginner’s perspective, focusing only on the essential concepts and commands needed to get started and feel comfortable using Git in real-world projects.
-
-```js
-console.log(foo());
-var foo = function () {
-	return 2;
-};
-```
 
 ## What is Git??
 
@@ -34,36 +27,33 @@ When development starts, things are simple. One person writes code, makes change
 
 Problems begin when:
 
-* Code is shared with others
+- Code is shared with others
 
-* Changes are made in parallel
+- Changes are made in parallel
 
-* Updates come back without clear context
-
+- Updates come back without clear context
 
 Suddenly, Everything feels unclear:
 
-* What changed
+- What changed
 
-* Who changed it
+- Who changed it
 
-* Why it was changed
+- Why it was changed
 
-* Which version is the correct one
-
+- Which version is the correct one
 
 Creating zips, sending updated files back and forth, or manually merging changes id frustrating and doesn’t scale. It leads to confusion, overwritten work, and broken code.
 
 Git exists to introduce order and traceability into this process. Instead of guessing, Git allow us:
 
-* Track every change made in working directory
+- Track every change made in working directory
 
-* Records who made the change and when
+- Records who made the change and when
 
-* Preserves a clear history
+- Preserves a clear history
 
-* Ensures everyone works from a single source of truth
-
+- Ensures everyone works from a single source of truth
 
 ## Core Git Concepts
 
@@ -151,12 +141,11 @@ git status
 
 Shows the current state of your project. By running this command you can see:
 
-* Which files are modified
+- Which files are modified
 
-* Which files are staged
+- Which files are staged
 
-* Which files are untracked
-
+- Which files are untracked
 
 ### git add &lt;filename&gt; / git add .
 
@@ -164,10 +153,9 @@ Shows the current state of your project. By running this command you can see:
 
 This command moves changes from the working directory to the staging area.
 
-* Use `git add <filename>` to stage a specific file
+- Use `git add <filename>` to stage a specific file
 
-* Use git add . to stage all modified files at once
-
+- Use git add . to stage all modified files at once
 
 Once staged, these changes are marked as ready to be committed, but they are not saved yet.
 
@@ -203,14 +191,13 @@ This command displays the commit history of the repository.
 
 It shows:
 
-* Commit IDs
+- Commit IDs
 
-* Author
+- Author
 
-* Date
+- Date
 
-* Commit messages
-
+- Commit messages
 
 ### git log —oneline
 
@@ -224,16 +211,14 @@ This command shows the commit history in a compact, single-line format.
 
 Each commit is displayed with:
 
-* 901ddc7 is the short commit ID
+- 901ddc7 is the short commit ID
 
-* Add hello.js is the commit message
+- Add hello.js is the commit message
 
-* (HEAD -&gt; main) means:
+- (HEAD -&gt; main) means:
+  - HEAD is currently pointing to this commit
 
-    * HEAD is currently pointing to this commit
-
-    * This commit is the latest one on the main branch
-
+  - This commit is the latest one on the main branch
 
 ### git diff
 
@@ -247,10 +232,9 @@ This command shows the difference between changes in your project.
 
 It is commonly used to:
 
-* Review changes before committing
+- Review changes before committing
 
-* Compare two commits using their commit IDs
-
+- Compare two commits using their commit IDs
 
 git diff helps you understand what exactly changed instead of guessing, making it a useful command before staging or committing code.
 
