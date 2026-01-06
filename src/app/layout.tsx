@@ -4,6 +4,7 @@ import { Rubik } from "next/font/google";
 import "./globals.css";
 import { ReactLenis } from "@/lib/lenis";
 import Progress from "@/components/progress";
+import Navbar from "@/components/Navbar";
 
 const rubik = Rubik({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
@@ -102,6 +103,7 @@ export default function RootLayout({
           <ReactLenis root options={{ lerp: 0.085, orientation: "vertical" }}>
             <main>
               <Progress />
+              <Navbar />
               {children}
             </main>
           </ReactLenis>

@@ -7,7 +7,7 @@ function Progress() {
   return (
     <motion.div
       style={{ scaleX: scrollYProgress, originX: 0 }}
-      className="bg-primary fixed inset-x-0 z-10 h-[5px] rounded-2xl"
+      className="bg-muted-foreground fixed inset-x-0 z-10 h-[5px] rounded-2xl"
     />
   );
 }
