@@ -4,6 +4,7 @@ import {
   getAllBlogSlugs,
   getBlogBySlug,
 } from "@/lib/blog";
+import { Metadata } from "next";
 import Image from "next/image";
 
 export async function generateStaticParams() {
@@ -30,10 +31,17 @@ export async function generateMetadata({
     keywords: blog.frontMatter.tags,
     creator: blog.frontMatter.author,
     referrer: "origin",
-    metadataBase: new URL("https://piyus.com"),
+    metadataBase: new URL("https://piyus.me"),
     openGraph: {
       title: blog.frontMatter.title,
       description: blog.frontMatter.description,
+      url: `https://piyus.me/blogs/${slug}`,
+      type: "article",
+      article: {
+        publishedTime: blog.frontMatter.date,
+        authors: [blog.frontMatter.author],
+        tags: blog.frontMatter.tags,
+      },
       images: blog.frontMatter.coverImage
         ? [
             {
@@ -45,7 +53,7 @@ export async function generateMetadata({
           ]
         : undefined,
     },
-  };
+  } as Metadata;
 }
 
 export default async function BlogContentPage({
