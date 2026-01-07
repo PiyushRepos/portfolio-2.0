@@ -1,14 +1,21 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
-import { Rubik } from "next/font/google";
+import { Rubik, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { ReactLenis } from "@/lib/lenis";
 import Progress from "@/components/progress";
 import Navbar from "@/components/Navbar";
 
-const rubik = Rubik({
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+const ibmPlexSans = IBM_Plex_Sans({
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
   subsets: ["latin"],
+  variable: "--font-ibm-plex-sans",
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-ibm-plex-mono",
 });
 
 export const metadata: Metadata = {
@@ -93,7 +100,7 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className={`${rubik.className} bg-background antialiased`}
+        className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} bg-background antialiased`}
       >
         <ThemeProvider
           attribute="class"

@@ -27,9 +27,9 @@ const CopyButton = ({ textToCopy }: { textToCopy: string }) => {
       className="absolute top-2 right-2 rounded-md bg-zinc-800/30 p-1 text-zinc-200 hover:bg-zinc-800/50"
     >
       {copied ? (
-        <Check className="h-4 w-4 text-green-500" />
+        <Check className="size-3.5 text-green-500" />
       ) : (
-        <Copy className="h-4 w-4" />
+        <Copy className="size-3.5" />
       )}
     </Button>
   );

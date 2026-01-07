@@ -5,7 +5,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 function Navbar() {
   return (
-    <nav className="bg-background/30 border-secondary-foreground/20 fixed top-2 right-0 left-0 z-40 mx-auto flex max-w-3xl items-center justify-between rounded-2xl border px-4 py-2 shadow-md">
+    <nav className="bg-background/90 border-secondary-foreground/20 fixed top-2 right-0 left-0 z-40 mx-auto flex max-w-3xl items-center justify-between rounded-2xl border px-4 py-2 shadow-md">
       <div>
         <div className="relative h-10 w-10 rounded-md select-none">
           <div className="relative z-10">
@@ -28,9 +28,18 @@ function Navbar() {
         </div>
       </div>
       <div className="text-primary flex items-center gap-4 text-sm font-medium">
-        <Link href={"/blogs"}>Blogs</Link>
-        <Link href={"/#projects"}>Projects</Link>
-        <Link href={"/#about"}>About</Link>
+        <Link className="text-primary/90 hover:text-primary" href={"/blogs"}>
+          Blogs
+        </Link>
+        <Link
+          className="text-primary/90 hover:text-primary"
+          href={"/#projects"}
+        >
+          Projects
+        </Link>
+        <Link className="text-primary/90 hover:text-primary" href={"/#about"}>
+          About
+        </Link>
         <ThemeToggler />
       </div>
     </nav>

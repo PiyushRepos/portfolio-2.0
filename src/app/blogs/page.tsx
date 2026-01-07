@@ -1,7 +1,7 @@
 import { socialLinks } from "@/components/Hero/links";
 import Subheading from "@/components/subheading";
 import { Badge } from "@/components/ui/badge";
-import { getAllBlogs } from "@/lib/blog";
+import { getAllBlogs, calculateReadingTime } from "@/lib/blog";
 import { NotebookText } from "lucide-react";
 import { Variants } from "motion";
 import * as motion from "motion/react-client";
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   authors: { name: "Piyush Kumar" },
   creator: "Piyush Kumar",
   referrer: "origin",
-  metadataBase: new URL("https://piyus.com"),
+  metadataBase: new URL("https://piyus.me"),
 };
 
 export default async function BlogsPage() {
@@ -77,52 +77,62 @@ export default async function BlogsPage() {
         initial="hidden"
         animate="show"
       >
-        {blogs.map((post) => (
-          <motion.div key={post.frontMatter.slug} variants={item}>
-            <article className="group relative flex flex-col space-y-3">
-              <div className="space-y-2">
-                <h3 className="text-foreground text-lg font-bold tracking-tight">
-                  <Link href={`/blogs/${post.frontMatter.slug}`}>
-                    <span className="absolute inset-0" />
-                    <span className="from-primary to-primary bg-gradient-to-r bg-[length:0%_2px] bg-left-bottom bg-no-repeat pb-1 transition-all duration-300 ease-out group-hover:bg-[length:100%_2px]">
-                      <span>&#10132; </span>
-                      {post.frontMatter.title}
-                    </span>
-                  </Link>
-                </h3>
-                <p className="text-muted-foreground line-clamp-3 text-base leading-relaxed">
-                  {post.frontMatter.description}
-                </p>
-              </div>
-              <div className="text-muted-foreground flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
-                <time dateTime={post.frontMatter.date}>
-                  {new Date(post.frontMatter.date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </time>
-                {post.frontMatter.tags && post.frontMatter.tags.length > 0 && (
-                  <>
-                    <div className="flex flex-wrap gap-2">
-                      {post.frontMatter.tags.slice(0, 3).map((tag) => (
-                        <Badge key={tag} variant={"secondary"}>
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                    {post.frontMatter.tags.length > 3 && (
-                      <span className="text-muted-foreground">
-                        &#43; {post.frontMatter.tags.length - 3} more
+        {blogs.map((post) => {
+          const readingTime = calculateReadingTime(post.content);
+
+          return (
+            <motion.div key={post.frontMatter.slug} variants={item}>
+              <article className="group relative flex flex-col space-y-3">
+                <div className="space-y-2">
+                  <h3 className="text-foreground text-lg font-bold tracking-tight">
+                    <Link href={`/blogs/${post.frontMatter.slug}`}>
+                      <span className="after:bg-primary relative pb-1 transition-all duration-300 ease-out after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:transition-all after:duration-300 group-hover:after:w-full">
+                        <span>&#10132; </span>
+                        {post.frontMatter.title}
                       </span>
+                    </Link>
+                  </h3>
+                  <p className="text-muted-foreground line-clamp-3 text-base leading-relaxed">
+                    {post.frontMatter.description}
+                  </p>
+                </div>
+                <div className="text-muted-foreground flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
+                  <time dateTime={post.frontMatter.date}>
+                    {new Date(post.frontMatter.date).toLocaleDateString(
+                      "en-US",
+                      {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      },
                     )}
-                  </>
-                )}
-              </div>
-            </article>
-            <hr className="border-border mt-8 border-t" />
-          </motion.div>
-        ))}
+                  </time>
+                  <span>•</span>
+                  <span>{readingTime} min read</span>
+                  {post.frontMatter.tags &&
+                    post.frontMatter.tags.length > 0 && (
+                      <>
+                        <span className="@min-lg:hidden">•</span>
+                        <div className="flex flex-wrap gap-2">
+                          {post.frontMatter.tags.slice(0, 3).map((tag) => (
+                            <Badge key={tag} variant={"secondary"}>
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                        {post.frontMatter.tags.length > 3 && (
+                          <span className="text-muted-foreground">
+                            &#43; {post.frontMatter.tags.length - 3} more
+                          </span>
+                        )}
+                      </>
+                    )}
+                </div>
+              </article>
+              <hr className="border-border mt-8 border-t" />
+            </motion.div>
+          );
+        })}
       </motion.div>
       <motion.div
         className="flex flex-col gap-8 pt-10 pb-5"

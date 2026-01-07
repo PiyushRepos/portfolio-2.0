@@ -14,7 +14,7 @@ const components: MDXRemoteProps["components"] = {
   ),
   h2: (props) => (
     <h2
-      className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-all duration-200 after:absolute after:ml-2 after:opacity-0 after:content-['#'] first:mt-0 hover:after:opacity-70"
+      className="scroll-m-20 border-b pb-2 font-semibold tracking-tight transition-all duration-200 after:absolute after:ml-2 after:opacity-0 after:content-['#'] first:mt-0 hover:after:opacity-70"
       {...props}
     />
   ),
@@ -73,7 +73,7 @@ const components: MDXRemoteProps["components"] = {
     if (isInline) {
       return (
         <code
-          className="bg-muted rounded px-1.5 py-1 font-mono font-semibold"
+          className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold"
           {...props}
         >
           {children}
@@ -85,7 +85,7 @@ const components: MDXRemoteProps["components"] = {
       lang: props.className?.replace("language-", "") || "text",
       theme: "github-dark",
       rootStyle:
-        "background-color: var(--color-zinc-900); padding: 1.25rem; margin: 0; font-size: inherit; overflow: initial; line-height: inherit;",
+        "background-color: var(--color-zinc-800); padding: 1rem; margin: 0; font-size: inherit; overflow: initial; line-height: inherit;",
     });
     return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
   },
@@ -108,6 +108,10 @@ const components: MDXRemoteProps["components"] = {
       </pre>
     );
   },
+  blockquote: (props) => (
+    <blockquote className="my-6 border-l-2 pl-6 italic" {...props} />
+  ),
+  ul: (props) => <ul className="my-6 ml-6 list-disc [&>li]:mt-2" {...props} />,
 };
 
 export function CustomMDX(props: { content: string; components?: any }) {

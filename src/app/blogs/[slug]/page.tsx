@@ -89,7 +89,7 @@ export default async function BlogContentPage({
         <h1 className="mb-4 text-4xl font-extrabold tracking-tight lg:text-5xl">
           {blog.frontMatter.title}
         </h1>
-        <p className="text-muted-foreground text-xl">
+        <p className="text-muted-foreground text-lg sm:text-xl">
           {blog.frontMatter.description}
         </p>
         <div className="mt-4 flex flex-wrap justify-center gap-2">
