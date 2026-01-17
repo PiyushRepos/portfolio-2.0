@@ -1,0 +1,313 @@
+---
+title: "Inside Git: How It Works and the Role of the .git Folder"
+description: "A deep dive into Git's internal workings, focusing on the .git folder and how Git tracks changes."
+date: 2026-01-15
+author: Piyush Kumar
+tags:
+  [
+    "chaicode",
+    "Git",
+    "Version Control",
+    "Git Internals",
+    "Programming",
+    "inside-git-folder",
+    "chaicodewebdevcohort",
+    "chaicodewebdevcohortjanuary2026",
+    "web development cohort",
+  ]
+coverImage: /blogs/inside-git-how-it-works-cover.png
+slug: inside-git-how-it-works
+draft: false
+---
+
+## Why Understanding Git Internals Matters
+
+Most beginners learn Git like this:
+
+- Run `git add`
+
+- Run `git commit`
+
+- Hope nothing breaks
+
+And honestly, that works…
+until something goes wrong.
+
+When Git feels confusing, it’s usually because we’re treating it like **magic** instead of a **system**.
+
+This article aims to remove that mystery.
+
+We won’t focus on commands.
+We’ll focus on **what Git is doing behind the scenes**, especially inside the mysterious `.git` folder.
+
+---
+
+## The Big Idea: Git Is Just a Smart Tracker
+
+At its core, Git does **four simple things**:
+
+1. Stores versions of your files
+
+2. Tracks changes over time
+
+3. Connects those changes
+
+4. Makes sure nothing is corrupted
+
+That’s it.
+
+Everything else in Git exists to support these ideas.
+
+## What Is the `.git` Folder?
+
+When you run:
+
+```bash
+git init
+```
+
+Git creates a hidden folder called `.git`.
+
+This folder is **the heart of Git**.
+
+Your project files are just files.
+The `.git` The folder is where Git stores **all the information it knows** about your project.
+
+If you delete `.git`:
+
+- Your code remains
+
+- Git forgets everything
+
+No history.
+No commits.
+No branches.
+
+## What’s Inside the `.git` Folder? (High Level)
+
+You don’t need to memorise this, just understand the idea.
+
+![A Look Inside the .git Folder](https://humbletoolsmith.com/img/posts/a-look-inside-the-_git-folder/Git%20Folder%20Internals.png)
+
+Conceptually, the `.git` folder contains:
+
+- **Objects** → the actual stored data
+
+- **References** → pointers to commits and branches
+
+- **HEAD** → tells Git where you currently are
+
+- **Index** → staging area information
+
+Everything Git does is based on these pieces.
+
+## Git Doesn’t Track Files, It Tracks Content
+
+This is important.
+
+Git does **not** think in terms of files like folders on your computer.
+
+Git thinks in terms of **snapshots of content**.
+
+Whenever something changes, Git asks:
+
+> “What is the exact content right now?”
+
+And then it stores that content safely.
+
+## Git Objects: The Building Blocks
+
+Internally, Git stores data using **objects**.
+
+There are three main ones you should know:
+
+- Blob
+
+- Tree
+
+- Commit
+
+Think of these as **Lego blocks** Git uses to build history.
+
+## 1\. Blob (The File Content)
+
+A **blob** represents the **content of a file**.
+
+Not the file name.
+Not the folder.
+Just the content.
+
+If two files have the same content, Git stores **only one blob**.
+
+This is one reason Git is efficient.
+
+## 2\. Tree (The Folder Structure)
+
+A **tree** represents:
+
+- Folder structure
+
+- File names
+
+- Which blobs belong where
+
+It answers questions like:
+
+- Which files exist?
+
+- How are they organised?
+
+Trees point to:
+
+- Blobs (files)
+
+- Other trees (subfolders)
+
+## 3\. Commit (The Snapshot)
+
+A **commit** ties everything together.
+
+A commit contains:
+
+- A reference to a tree
+
+- A message
+
+- Author info
+
+- A reference to the previous commit
+
+This is how Git builds **history**.
+
+![Git Book - The Git Object Model](https://shafiul.github.io/gitbook/assets/images/figure/objects-example.png)
+
+So a commit is basically:
+
+> “Here is the exact state of the project at this moment.”
+
+---
+
+## How Git Tracks Changes (The Mental Model)
+
+Git does not store _differences_ by default.
+It stores **snapshots**.
+
+Each commit is a full picture of your project. But Git is smart enough to reuse unchanged blobs.
+
+That’s why:
+
+- Commits are fast
+
+- Storage stays efficient
+
+## What Actually Happens During `git add`
+
+When you run:
+
+```bash
+git add file.txt
+```
+
+Git does **not** create a commit.
+
+Instead, Git:
+
+1. Takes the current content of the file
+
+2. Converts it into a blob
+
+3. Stores it in the `.git` folder
+
+4. Adds it to the **staging area**
+
+The staging area is just:
+
+> “These are the changes I plan to commit next”
+
+Nothing more.
+
+## What Actually Happens During `git commit`
+
+When you run:
+
+```bash
+git commit
+```
+
+Git now:
+
+1. Takes everything from the staging area
+
+2. Creates a tree (folder structure)
+
+3. Creates a commit object
+
+4. Links it to the previous commit
+
+![Git Gud: The Working Tree, Staging Area, and Local Repo | by Lucas ...](https://miro.medium.com/1%2AdiRLm1S5hkVoh5qeArND0Q.png)
+
+This is how Git builds a **chain of history**.
+
+## How Git Uses Hashes (Why Git Is So Reliable)
+
+Every object in Git is identified by a **hash**.
+
+A hash is:
+
+- Generated from the content itself
+
+- Always the same for the same content
+
+- Impossible to fake safely
+
+This means:
+
+- If content changes → hash changes
+
+- If data is corrupted → Git knows
+
+Git doesn’t _trust filenames_.
+It trusts **content integrity**.
+
+That’s why Git is:
+
+- Fast
+
+- Reliable
+
+- Safe for large teams
+
+## Why This Mental Model Matters
+
+When you understand that:
+
+- Git stores content, not files
+
+- Commits are snapshots
+
+- `.git` is the brain
+
+- Objects are connected by hashes
+
+Then Git commands stop feeling random.
+
+You’re no longer memorising steps.
+You’re **operating a system you understand**.
+
+## Final Thoughts
+
+Git is not magic.
+It’s a very carefully designed storage and history system.
+
+The `.git` The folder is where:
+
+- Your project’s memory lives
+
+- Your collaboration safety comes from
+
+- Your mistakes become recoverable
+
+Once you understand what’s inside Git,
+Using Git becomes calmer, safer, and more intentional.
+
+And that’s when Git stops feeling scary and starts feeling powerful.
