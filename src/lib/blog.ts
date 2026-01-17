@@ -48,7 +48,10 @@ export async function getAllBlogs(): Promise<Post[]> {
       fileNames.map(async (fileName) => {
         const filePath = path.join(blogsDirectory, fileName);
 
-        const fileContents = await readFile(filePath);
+        let fileContents = await readFile(filePath);
+
+        // Normalize line endings to Unix format
+        fileContents = fileContents.replace(/\r\n/g, "\n");
 
         const { data, content } = matter(fileContents);
 
@@ -76,11 +79,14 @@ export async function getAllBlogs(): Promise<Post[]> {
 export async function getBlogBySlug(slug: string): Promise<Post | null> {
   try {
     const filePath = path.join(blogsDirectory, `${slug}.mdx`);
-    const fileContents = await readFile(filePath);
+    let fileContents = await readFile(filePath);
 
     if (!fileContents) {
       return null;
     }
+
+    // Normalize line endings to Unix format
+    fileContents = fileContents.replace(/\r\n/g, "\n");
 
     const { data, content } = matter(fileContents);
 

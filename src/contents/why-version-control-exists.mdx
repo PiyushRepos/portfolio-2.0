@@ -1,0 +1,261 @@
+---
+title: "Why Version Control Exists: The Pendrive Problem"
+description: "Understanding the purpose and importance of version control systems in software development."
+tags:
+  [
+    "Version Control",
+    "Software Development",
+    "Collaboration",
+    "Git",
+    "History Tracking",
+    "Pendrive Problem",
+  ]
+slug: why-version-control-exists
+date: 2024-06-20
+author: Piyush Kumar
+coverImage: /blogs/why-version-control-exists-cover.png
+draft: false
+---
+
+Before Git, before GitHub, before cloud platforms…
+There was confusion.
+
+Not about _how to write code_,
+But about **which code was the correct one**?
+
+If you’ve ever seen files named like:
+
+- `project_final`
+
+- `project_final_v2`
+
+- `project_final_v3`
+
+- `project_final_latest`
+
+- `project_final_latest_updated`
+
+Then you already understand the problem.
+
+Version control exists because developers needed a way to **stop losing work**, **stop overwriting each other’s code**, and **work together without fear**.
+
+## The Pendrive Analogy in Software Development
+
+Let’s go back to a time before modern tools.
+
+No Git.
+No GitHub.
+No shared repositories.
+
+Just:
+
+- Pendrives
+
+- Emails
+
+- Local folders
+
+- Trust issues
+
+### A very common workflow back then
+
+1. The developer writes some code
+
+2. Copy it to a pendrive
+
+3. Hand it to Developer B
+
+4. Developer B modifies the code
+
+5. Someone forgets which version is the latest
+
+6. Everything breaks
+
+This approach worked only when:
+
+- There was **one developer**
+
+- Or the project was **very small**
+
+The moment teams grew, problems started showing up.
+
+## The Famous “Final” Folder System
+
+Every developer had folders like this:
+
+```plaintext
+project/
+ ├─ final/
+ ├─ final_v2/
+ ├─ final_v3/
+ ├─ final_latest/
+ ├─ final_latest_please_work/
+```
+
+Each folder looked important.
+None of them was trustworthy.
+
+You could never answer questions like:
+
+- Which file is the latest?
+
+- What changed since yesterday?
+
+- Who modified this line?
+
+This wasn’t laziness.
+This was the **absence of a system**.
+
+## Problems Faced Before Version Control Systems
+
+### 1\. Code Was Accidentally Overwritten
+
+Two developers edited the same file.
+
+One copied their version last.
+
+The other person’s work?
+
+Gone.
+No history.
+No undo button.
+
+### 2\. Changes Were Lost Forever
+
+If something broke, you couldn’t go back and check:
+
+- What the code looked like yesterday
+
+- When a bug was introduced
+
+- Why was a change made
+
+Once overwritten, the old version **ceased to exist**.
+
+### 3\. No Collaboration History
+
+If a bug appeared, questions followed:
+
+- Who wrote this code?
+
+- When was it added?
+
+- Why was it changed?
+
+Most of the time, the answer was silence.
+
+There was **no accountability**, not because people were careless, but because the system didn’t support it.
+
+### 4\. Team Collaboration Was Painful
+
+Now imagine:
+
+- 3–5 developers
+
+- Same project
+
+- Same files
+
+- Different copies of code
+
+Everyone was working hard,
+Yet everything felt fragile.
+
+One wrong copy-paste could break the entire project.
+
+## The Real-World Team Problem
+
+As software teams grew, this problem became serious.
+
+Companies needed:
+
+- Multiple developers working together
+
+- Safe collaboration
+
+- A clear history of changes
+
+- A way to recover from mistakes
+
+Pendrives, emails, and folder naming conventions were never designed for this.
+
+So the question became:
+
+> How do we let many people work on the same code without destroying each other’s work?
+
+## Why Version Control Became Mandatory
+
+Version control systems were created to solve this exact problem.
+
+Instead of manually sharing files, developers now had:
+
+- A **single source of truth**
+
+- Automatic tracking of changes
+
+- A complete history of the project
+
+- Safe ways to combine work from multiple people
+
+Every change is:
+
+- Recorded
+
+- Traceable
+
+- Reversible
+
+Nothing disappears silently.
+
+## Pendrive Workflow vs Version Control Workflow
+
+| Pendrive / Email Workflow | Version Control Workflow |
+| ------------------------- | ------------------------ |
+| Manual file sharing       | Central repository       |
+| Files get overwritten     | Changes are tracked      |
+| No history                | Full change history      |
+| Hard collaboration        | Team-friendly            |
+| High risk                 | Controlled and safe      |
+
+## Connecting This to Git
+
+Git may feel confusing at first.
+
+Commands.
+Commits.
+Branches.
+Merges.
+
+But Git didn’t make development complicated.
+It **organised problems that already existed**.
+
+Every Git feature exists because something used to go wrong:
+
+- Commits exist because changes were getting lost
+
+- History exists because teams needed visibility
+
+- Branches exist because working on the same code was risky
+
+- Merging exists because collaboration had to be safe
+
+When you understand the **pendrive problem**, Git starts to feel less intimidating and more logical.
+
+## Final Thoughts
+
+Version control is not about tools.
+It’s about **protecting work**.
+
+It exists because:
+
+- Pendrives failed
+
+- Emails failed
+
+- “final_v3_latest” failed
+
+Version control became essential because modern software development **cannot survive without collaboration**.
+
+And collaboration without history, safety, and trust simply doesn’t work.
+
+That’s why version control exists.
