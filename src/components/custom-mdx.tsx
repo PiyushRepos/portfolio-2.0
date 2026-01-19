@@ -5,6 +5,7 @@ import Link from "next/link";
 import { codeToHtml } from "shiki";
 import remarkGfm from "remark-gfm";
 import CopyButton from "./copy";
+import { Card } from "./ui/card";
 
 const components: MDXRemoteProps["components"] = {
   h1: (props) => (
@@ -15,12 +16,13 @@ const components: MDXRemoteProps["components"] = {
   ),
   h2: (props) => (
     <h2
+      id={props.children?.toString().toLowerCase().replace(/\s+/g, "-")}
       className="scroll-m-20 border-b pb-2 font-semibold tracking-tight transition-all duration-200 after:absolute after:ml-2 after:opacity-0 after:content-['#'] first:mt-0 hover:after:opacity-70"
       {...props}
     />
   ),
   h3: (props) => (
-    <h3 className="scroll-m-20 text-2xl font-semibold" {...props} />
+    <h3 className="scroll-m-20 text-xl font-semibold" {...props} />
   ),
   img: (props) => (
     <Image
@@ -86,9 +88,17 @@ const components: MDXRemoteProps["components"] = {
       lang: props.className?.replace("language-", "") || "text",
       theme: "github-dark",
       rootStyle:
-        "background-color: var(--color-zinc-800); padding: 1rem; margin: 0; font-size: inherit; overflow: initial; line-height: inherit;",
+        "background-color: transparent; padding: .5rem; margin: 0; border-radius: .4rem font-size: inherit; overflow: initial; line-height: 2;",
     });
-    return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
+    return (
+      <Card className="rounded-sm bg-[#171717] px-2 py-2">
+        <code
+          className="rounded-md"
+          dangerouslySetInnerHTML={{ __html: codeHTML }}
+          {...props}
+        />
+      </Card>
+    );
   },
   pre: (props) => {
     const getTextFromChildren = (children: React.ReactNode): string => {

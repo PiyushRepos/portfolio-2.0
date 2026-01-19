@@ -1,11 +1,16 @@
 import { CustomMDX } from "@/components/custom-mdx";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   calculateReadingTime,
   getAllBlogSlugs,
   getBlogBySlug,
+  getBlogTOCBySlug,
 } from "@/lib/blog";
+import { cn } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 export async function generateStaticParams() {
   const slugs = await getAllBlogSlugs();
@@ -62,7 +67,10 @@ export default async function BlogContentPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const blog = await getBlogBySlug(slug);
+  const [blog, tocData] = await Promise.all([
+    getBlogBySlug(slug),
+    getBlogTOCBySlug(slug),
+  ]);
 
   if (!blog) {
     return <div className="text-muted-foreground">Blog post not found.</div>;
@@ -71,9 +79,21 @@ export default async function BlogContentPage({
   const readingTime = calculateReadingTime(blog.content);
 
   return (
-    <div>
-      <div className="mb-8 text-center">
-        <div className="text-muted-foreground mb-4 flex items-center justify-center gap-2 text-sm">
+    <div className="w-full">
+      {blog.frontMatter.coverImage && (
+        <div className="bg-muted mb-10 overflow-hidden rounded-lg border shadow-sm">
+          <Image
+            src={blog.frontMatter.coverImage}
+            alt={blog.frontMatter.title}
+            className="aspect-video w-full object-cover"
+            width={1280}
+            height={720}
+            priority
+          />
+        </div>
+      )}
+      <div className="mb-8">
+        <div className="text-muted-foreground mb-4 flex items-center justify-start gap-2 text-sm">
           <time dateTime={blog.frontMatter.date}>
             {new Date(blog.frontMatter.date).toLocaleDateString("en-IN", {
               year: "numeric",
@@ -92,7 +112,7 @@ export default async function BlogContentPage({
         <p className="text-muted-foreground text-lg sm:text-xl">
           {blog.frontMatter.description}
         </p>
-        <div className="mt-4 flex flex-wrap justify-center gap-2">
+        <div className="mt-4 flex flex-wrap justify-start gap-2">
           {blog.frontMatter.tags.map((tag) => (
             <span
               key={tag}
@@ -104,20 +124,49 @@ export default async function BlogContentPage({
         </div>
       </div>
 
-      {blog.frontMatter.coverImage && (
-        <div className="bg-muted mb-10 overflow-hidden rounded-lg border shadow-sm">
-          <Image
-            src={blog.frontMatter.coverImage}
-            alt={blog.frontMatter.title}
-            className="aspect-video w-full object-cover"
-            width={1280}
-            height={720}
-            priority
-          />
+      {tocData && tocData.toc.length > 0 && (
+        <div className="mb-8 w-full">
+          <Card className="border-muted bg-card/50">
+            <CardHeader className="border-b [.border-b]:pb-1">
+              <CardTitle className="text-base font-semibold">
+                Table of Contents
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="px-2 py-0">
+              <nav aria-label="Table of contents">
+                <ul className="flex flex-col">
+                  {tocData.toc
+                    .filter((item) => item.level === 2)
+                    .map((item) => (
+                      <li key={item.id}>
+                        <Link
+                          href={`#${item.id}`}
+                          className={cn(
+                            "text-muted-foreground hover:text-foreground",
+                            "group flex items-start gap-2 rounded-md px-3 py-2",
+                            "transition-colors duration-200",
+                            "hover:bg-accent focus-visible:bg-accent",
+                            "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
+                          )}
+                        >
+                          <ArrowRight
+                            className="mt-0.5 size-4 shrink-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                            aria-hidden="true"
+                          />
+                          <span className="text-sm leading-relaxed">
+                            {item.text}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                </ul>
+              </nav>
+            </CardContent>
+          </Card>
         </div>
       )}
 
-      <article className="prose dark:prose-invert w-full max-w-none">
+      <article className="prose dark:prose-invert w-full max-w-none text-pretty">
         <CustomMDX content={blog.content} />
       </article>
     </div>

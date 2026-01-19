@@ -76,6 +76,43 @@ export async function getAllBlogs(): Promise<Post[]> {
   }
 }
 
+export async function getBlogTOCBySlug(slug: string): Promise<{
+  toc: Array<{ text: string; id: string; level: number }>;
+} | null> {
+  try {
+    const filePath = path.join(blogsDirectory, `${slug}.mdx`);
+    let fileContents = await readFile(filePath);
+
+    if (!fileContents) {
+      return null;
+    }
+
+    fileContents = fileContents.replace(/\r\n/g, "\n");
+    const { data, content } = matter(fileContents);
+    if (data.draft === true) {
+      console.log(`Blog post "${data.title}" is marked as draft. Skipping.`);
+      return null;
+    }
+    const toc: Array<{ text: string; id: string; level: number }> = [];
+    const lines = content.split("\n");
+    const headingRegex = /^(#{1,6})\s+(.*)$/; // Matches Markdown headings
+    for (const line of lines) {
+      const match = line.match(headingRegex);
+      if (match) {
+        const level = match[1].length;
+        let text = match[2].trim();
+        text = text.replace(/^\d+\\\.\s*/, "");
+        const id = text.toLowerCase().replace(/\s+/g, "-");
+        toc.push({ text, id, level });
+      }
+    }
+
+    return { toc };
+  } catch (error) {
+    return null;
+  }
+}
+
 export async function getBlogBySlug(slug: string): Promise<Post | null> {
   try {
     const filePath = path.join(blogsDirectory, `${slug}.mdx`);
