@@ -145,7 +145,7 @@ ul > li {
 }
 
 .prose pre code {
-  @apply rounded-lg bg-transparent;
+  @apply rounded-lg bg-transparent text-sm;
 }
 
 .prose pre {
@@ -163,6 +163,13 @@ ul > li {
 
 .prose p {
   @apply text-foreground/90 leading-7;
+}
+
+.prose
+  :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)):before,
+.prose
+  :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)):after {
+  @apply content-[''];
 }
 
 ::view-transition-old(root),

@@ -106,7 +106,7 @@ export default async function BlogContentPage({
           <span>•</span>
           <span>{blog.frontMatter.author}</span>
         </div>
-        <h1 className="mb-4 text-4xl font-extrabold tracking-tight lg:text-5xl">
+        <h1 className="mb-4 text-4xl font-extrabold text-balance lg:text-5xl">
           {blog.frontMatter.title}
         </h1>
         <p className="text-muted-foreground text-lg sm:text-xl">
@@ -166,7 +166,7 @@ export default async function BlogContentPage({
         </div>
       )}
 
-      <article className="prose dark:prose-invert w-full max-w-none text-pretty">
+      <article className="prose prose-neutral dark:prose-invert w-full max-w-none">
         <CustomMDX content={blog.content} />
       </article>
     </div>
