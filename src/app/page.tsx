@@ -1,5 +1,6 @@
 import { Hero, Projects } from "@/components";
 import About from "@/components/About";
+import Blogs from "@/components/Blog";
 import Container from "@/components/container";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -12,6 +13,7 @@ function page() {
       <Hero />
       <Projects />
       <Skills />
+      <Blogs />
       <About />
       <CTA />
       <Footer />

@@ -1,5 +1,11 @@
 import { CustomMDX } from "@/components/custom-mdx";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import {
   calculateReadingTime,
   getAllBlogSlugs,
@@ -7,7 +13,7 @@ import {
   getBlogTOCBySlug,
 } from "@/lib/blog";
 import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -49,13 +55,13 @@ export async function generateMetadata({
       },
       images: blog.frontMatter.coverImage
         ? [
-            {
-              url: blog.frontMatter.coverImage,
-              width: 1280,
-              height: 720,
-              alt: blog.frontMatter.title,
-            },
-          ]
+          {
+            url: blog.frontMatter.coverImage,
+            width: 1280,
+            height: 720,
+            alt: blog.frontMatter.title,
+          },
+        ]
         : undefined,
     },
   } as Metadata;
@@ -80,6 +86,14 @@ export default async function BlogContentPage({
 
   return (
     <div className="w-full">
+      <div className="mb-6">
+        <Button variant="ghost" size="sm" asChild>
+          <Link href="/blogs" className="group">
+            <ArrowLeft className="transition-transform duration-200 group-hover:-translate-x-1" />
+            Back to Blogs
+          </Link>
+        </Button>
+      </div>
       {blog.frontMatter.coverImage && (
         <div className="bg-muted mb-10 overflow-hidden rounded-lg border shadow-sm">
           <Image
@@ -126,43 +140,43 @@ export default async function BlogContentPage({
 
       {tocData && tocData.toc.length > 0 && (
         <div className="mb-8 w-full">
-          <Card className="border-muted bg-card/50">
-            <CardHeader className="border-b [.border-b]:pb-1">
-              <CardTitle className="text-base font-semibold">
+          <Accordion type="single" collapsible className="bg-card rounded-lg border">
+            <AccordionItem value="toc" className="border-b-0">
+              <AccordionTrigger className="px-6 py-4 text-base font-semibold hover:no-underline">
                 Table of Contents
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="px-2 py-0">
-              <nav aria-label="Table of contents">
-                <ul className="flex flex-col">
-                  {tocData.toc
-                    .filter((item) => item.level === 2)
-                    .map((item) => (
-                      <li key={item.id}>
-                        <Link
-                          href={`#${item.id}`}
-                          className={cn(
-                            "text-muted-foreground hover:text-foreground",
-                            "group flex items-start gap-2 rounded-md px-3 py-2",
-                            "transition-colors duration-200",
-                            "hover:bg-accent focus-visible:bg-accent",
-                            "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
-                          )}
-                        >
-                          <ArrowRight
-                            className="mt-0.5 size-4 shrink-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-                            aria-hidden="true"
-                          />
-                          <span className="text-sm leading-relaxed">
-                            {item.text}
-                          </span>
-                        </Link>
-                      </li>
-                    ))}
-                </ul>
-              </nav>
-            </CardContent>
-          </Card>
+              </AccordionTrigger>
+              <AccordionContent className="px-2 pb-2">
+                <nav aria-label="Table of contents">
+                  <ul className="flex flex-col">
+                    {tocData.toc
+                      .filter((item) => item.level === 2)
+                      .map((item) => (
+                        <li key={item.id}>
+                          <Link
+                            href={`#${item.id}`}
+                            className={cn(
+                              "text-muted-foreground hover:text-foreground",
+                              "group flex items-start gap-2 rounded-md px-3 py-2",
+                              "transition-colors duration-200",
+                              "hover:bg-accent focus-visible:bg-accent",
+                              "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
+                            )}
+                          >
+                            <ArrowRight
+                              className="mt-0.5 size-4 shrink-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                              aria-hidden="true"
+                            />
+                            <span className="text-sm leading-relaxed">
+                              {item.text}
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                  </ul>
+                </nav>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       )}
 

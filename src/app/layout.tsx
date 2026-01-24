@@ -1,10 +1,10 @@
-import { ThemeProvider } from "@/components/theme-provider";
-import type { Metadata } from "next";
-import { Rubik, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
-import "./globals.css";
-import { ReactLenis } from "@/lib/lenis";
-import Progress from "@/components/progress";
 import Navbar from "@/components/Navbar";
+import Progress from "@/components/progress";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ReactLenis } from "@/lib/lenis";
+import type { Metadata } from "next";
+import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import "./globals.css";
 
 const ibmPlexSans = IBM_Plex_Sans({
   weight: ["100", "200", "300", "400", "500", "600", "700"],
