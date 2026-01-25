@@ -38,7 +38,7 @@ export async function generateMetadata({
   return {
     title: blog.frontMatter.title,
     description: blog.frontMatter.description,
-    authors: { name: blog.frontMatter.author },
+    authors: [{ name: blog.frontMatter.author }],
     keywords: blog.frontMatter.tags,
     creator: blog.frontMatter.author,
     referrer: "origin",
@@ -55,13 +55,23 @@ export async function generateMetadata({
       },
       images: blog.frontMatter.coverImage
         ? [
-          {
-            url: blog.frontMatter.coverImage,
-            width: 1280,
-            height: 720,
-            alt: blog.frontMatter.title,
-          },
-        ]
+            {
+              url: blog.frontMatter.coverImage,
+              width: 1280,
+              height: 720,
+              alt: blog.frontMatter.title,
+            },
+          ]
+        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: blog.frontMatter.title,
+      description: blog.frontMatter.description,
+      creator: blog.frontMatter.author,
+      site: "@piyuscodes",
+      images: blog.frontMatter.coverImage
+        ? [blog.frontMatter.coverImage]
         : undefined,
     },
   } as Metadata;
@@ -140,7 +150,11 @@ export default async function BlogContentPage({
 
       {tocData && tocData.toc.length > 0 && (
         <div className="mb-8 w-full">
-          <Accordion type="single" collapsible className="bg-card rounded-lg border">
+          <Accordion
+            type="single"
+            collapsible
+            className="bg-card rounded-lg border"
+          >
             <AccordionItem value="toc" className="border-b-0">
               <AccordionTrigger className="px-6 py-4 text-base font-semibold hover:no-underline">
                 Table of Contents
