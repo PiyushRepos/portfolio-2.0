@@ -162,7 +162,7 @@ ul > li {
 }
 
 .prose p {
-  @apply text-foreground/90 leading-7;
+  @apply text-foreground/95 leading-7;
 }
 
 .prose
