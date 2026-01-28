@@ -1,3 +1,5 @@
+import { BlogCard } from "@/components/Blog/blog-card";
+import { TableOfContents } from "@/components/Blog/table-of-contents";
 import { CustomMDX } from "@/components/custom-mdx";
 import {
   Accordion,
@@ -5,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   calculateReadingTime,
@@ -13,7 +16,7 @@ import {
   getBlogTOCBySlug,
 } from "@/lib/blog";
 import { cn } from "@/lib/utils";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, CalendarDays, Clock, User2 } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -95,108 +98,115 @@ export default async function BlogContentPage({
   const readingTime = calculateReadingTime(blog.content);
 
   return (
-    <div className="w-full">
-      <div className="mb-6">
-        <Button variant="ghost" size="sm" asChild>
-          <Link href="/blogs" className="group">
-            <ArrowLeft className="transition-transform duration-200 group-hover:-translate-x-1" />
-            Back to Blogs
-          </Link>
-        </Button>
+    <div className="relative w-full">
+      {/* Back Button */}
+      <div className="mb-8">
+        <Link
+          href="/blogs"
+          className="text-muted-foreground hover:text-primary group inline-flex items-center text-sm font-medium transition-colors"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
+          Back to Blogs
+        </Link>
       </div>
+
+      {/* Hero Section */}
+      <header className="mb-10 flex flex-col gap-6">
+        <div className="flex flex-wrap items-center gap-2">
+          {blog.frontMatter.tags.map((tag) => (
+            <Badge key={tag} variant="secondary" className="px-2.5 py-0.5">
+              {tag}
+            </Badge>
+          ))}
+        </div>
+        
+        <h1 className="text-4xl font-extrabold tracking-tight text-balance lg:text-5xl">
+          {blog.frontMatter.title}
+        </h1>
+
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+          <div className="flex items-center gap-2">
+            <User2 className="h-4 w-4" />
+            <span className="font-medium text-foreground">
+              {blog.frontMatter.author}
+            </span>
+          </div>
+          <div className="flex items-center gap-2">
+             <CalendarDays className="h-4 w-4" />
+             <time dateTime={blog.frontMatter.date}>
+              {new Date(blog.frontMatter.date).toLocaleDateString("en-IN", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+             </time>
+          </div>
+          <div className="flex items-center gap-2">
+            <Clock className="h-4 w-4" />
+            <span>{readingTime} min read</span>
+          </div>
+        </div>
+      </header>
+
+      {/* Featured Image */}
       {blog.frontMatter.coverImage && (
-        <div className="bg-muted mb-10 overflow-hidden rounded-lg border shadow-sm">
+        <div className="bg-muted mb-12 overflow-hidden rounded-xl border shadow-sm">
           <Image
             src={blog.frontMatter.coverImage}
             alt={blog.frontMatter.title}
-            className="aspect-video w-full object-cover"
+            className="aspect-[21/9] w-full object-cover"
             width={1280}
-            height={720}
+            height={600}
             priority
           />
         </div>
       )}
-      <div className="mb-8">
-        <div className="text-muted-foreground mb-4 flex items-center justify-start gap-2 text-sm">
-          <time dateTime={blog.frontMatter.date}>
-            {new Date(blog.frontMatter.date).toLocaleDateString("en-IN", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
-          </time>
-          <span>•</span>
-          <span>{readingTime} min read</span>
-          <span>•</span>
-          <span>{blog.frontMatter.author}</span>
-        </div>
-        <h1 className="mb-4 text-4xl font-extrabold text-balance lg:text-5xl">
-          {blog.frontMatter.title}
-        </h1>
-        <p className="text-secondary-foreground text-lg sm:text-xl">
-          {blog.frontMatter.description}
-        </p>
-        <div className="mt-4 flex flex-wrap justify-start gap-2">
-          {blog.frontMatter.tags.map((tag) => (
-            <span
-              key={tag}
-              className="bg-secondary text-secondary-foreground rounded-full px-3 py-1 text-xs font-medium"
+
+      <div className="mx-auto max-w-none">
+        {/* TOC */}
+        {tocData && tocData.toc.length > 0 && (
+          <div className="mb-8 w-full">
+            <Accordion
+              type="single"
+              collapsible
+              className="bg-card rounded-lg border"
             >
-              #{tag}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {tocData && tocData.toc.length > 0 && (
-        <div className="mb-8 w-full">
-          <Accordion
-            type="single"
-            collapsible
-            className="bg-card rounded-lg border"
-          >
-            <AccordionItem value="toc" className="border-b-0">
-              <AccordionTrigger className="px-6 py-4 text-base font-semibold hover:no-underline">
-                Table of Contents
-              </AccordionTrigger>
-              <AccordionContent className="px-2 pb-2">
-                <nav aria-label="Table of contents">
-                  <ul className="flex flex-col">
-                    {tocData.toc
-                      .filter((item) => item.level === 2)
-                      .map((item) => (
-                        <li key={item.id}>
-                          <Link
-                            href={`#${item.id}`}
-                            className={cn(
-                              "text-muted-foreground hover:text-foreground",
-                              "group flex items-start gap-2 rounded-md px-3 py-2",
-                              "transition-colors duration-200",
-                              "hover:bg-accent focus-visible:bg-accent",
-                              "focus-visible:ring-ring focus-visible:ring-2 focus-visible:outline-none",
-                            )}
-                          >
-                            <ArrowRight
-                              className="mt-0.5 size-4 shrink-0 opacity-0 transition-opacity duration-200 group-hover:opacity-100"
-                              aria-hidden="true"
-                            />
-                            <span className="text-sm leading-relaxed">
+              <AccordionItem value="toc" className="border-b-0">
+                <AccordionTrigger className="px-6 py-4 text-sm font-semibold hover:no-underline">
+                  Table of Contents
+                </AccordionTrigger>
+                <AccordionContent className="px-2 pb-2">
+                  <nav aria-label="Table of contents">
+                    <ul className="flex flex-col">
+                      {tocData.toc
+                        .filter((item) => item.level === 2 || item.level === 3)
+                        .map((item) => (
+                          <li key={item.id}>
+                            <Link
+                              href={`#${item.id}`}
+                              className={cn(
+                                "text-muted-foreground hover:text-foreground block rounded-md px-3 py-2 text-sm transition-colors",
+                                "hover:bg-accent focus:bg-accent outline-none"
+                              )}
+                            >
                               {item.text}
-                            </span>
-                          </Link>
-                        </li>
-                      ))}
-                  </ul>
-                </nav>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-        </div>
-      )}
+                            </Link>
+                          </li>
+                        ))}
+                    </ul>
+                  </nav>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        )}
 
-      <article className="prose prose-neutral dark:prose-invert w-full max-w-none">
-        <CustomMDX content={blog.content} />
-      </article>
+        <article className="prose prose-neutral dark:prose-invert max-w-none">
+          <div className="prose-headings:scroll-mt-20">
+            <CustomMDX content={blog.content} />
+          </div>
+        </article>
+      </div>
     </div>
   );
 }

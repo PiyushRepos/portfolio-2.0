@@ -160,11 +160,27 @@ ul > li {
 .prose h4,
 .prose h5,
 .prose h6 {
-  @apply text-primary;
+  @apply text-foreground scroll-m-20 tracking-tight;
 }
 
 .prose p {
-  @apply text-foreground/95 leading-7;
+  @apply text-muted-foreground leading-7 [&:not(:first-child)]:mt-6;
+}
+
+.prose a {
+  @apply font-medium text-primary no-underline underline-offset-4 hover:underline;
+}
+
+.prose blockquote {
+  @apply mt-6 border-l-2 border-primary pl-6 italic text-muted-foreground;
+}
+
+.prose ul > li::marker {
+  @apply text-muted-foreground;
+}
+
+.prose code {
+  @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-foreground;
 }
 
 .prose
