@@ -1,5 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { Post } from "@/lib/blog";
+import { cn } from "@/lib/utils";
+import { ArrowUpRight, CalendarDays, Clock } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export const BlogCard = ({
@@ -10,48 +13,71 @@ export const BlogCard = ({
   readingTime: number;
 }) => {
   return (
-    <article className="group relative flex flex-col space-y-3">
-      <div className="space-y-2">
-        <h3 className="text-foreground text-lg font-bold tracking-tight">
-          <Link href={`/blogs/${blog.frontMatter.slug}`}>
-            <span className="after:bg-primary relative pb-1 transition-all duration-300 ease-out after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:transition-all after:duration-300 group-hover:after:w-full">
-              <span>&#10132; </span>
-              {blog.frontMatter.title}
-            </span>
-          </Link>
-        </h3>
-        <p className="text-muted-foreground line-clamp-3 text-base leading-relaxed">
-          {blog.frontMatter.description}
-        </p>
-      </div>
-      <div className="text-muted-foreground flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
-        <time dateTime={blog.frontMatter.date}>
-          {new Date(blog.frontMatter.date).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </time>
-        <span>•</span>
-        <span>{readingTime} min read</span>
-        {blog.frontMatter.tags && blog.frontMatter.tags.length > 0 && (
-          <>
-            <span className="@min-lg:hidden">•</span>
-            <div className="flex flex-wrap gap-2">
-              {blog.frontMatter.tags.slice(0, 3).map((tag) => (
-                <Badge key={tag} variant={"secondary"}>
+    <Link
+      href={`/blogs/${blog.frontMatter.slug}`}
+      className="group block h-full"
+    >
+      <div
+        className={cn(
+          "relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card text-card-foreground",
+          "transition-all duration-200 ease-out",
+          "hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1"
+        )}
+      >
+        <div className="relative aspect-[16/9] w-full overflow-hidden bg-muted">
+          {blog.frontMatter.coverImage && (
+            <Image
+              src={blog.frontMatter.coverImage}
+              alt={blog.frontMatter.title}
+              fill
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          )}
+        </div>
+        <div className="flex flex-1 flex-col p-6">
+          <div className="mb-4 flex flex-wrap gap-2">
+            {blog.frontMatter.tags &&
+              blog.frontMatter.tags.slice(0, 3).map((tag) => (
+                <Badge
+                  key={tag}
+                  variant="secondary"
+                  className="rounded-md px-2.5 py-0.5 text-xs font-medium transition-colors group-hover:bg-secondary/80"
+                >
                   {tag}
                 </Badge>
               ))}
+          </div>
+          <h3 className="mb-3 text-xl font-bold leading-tight tracking-tight text-balance group-hover:text-primary transition-colors duration-200">
+            {blog.frontMatter.title}
+          </h3>
+          <p className="mb-6 flex-1 text-sm text-muted-foreground text-pretty line-clamp-3">
+            {blog.frontMatter.description}
+          </p>
+          <div className="mt-auto flex items-center justify-between border-t pt-4 text-xs text-muted-foreground">
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-1.5 tabular-nums">
+                <CalendarDays className="h-3.5 w-3.5" />
+                <time dateTime={blog.frontMatter.date}>
+                  {new Date(blog.frontMatter.date).toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </time>
+              </div>
+              <div className="flex items-center gap-1.5 tabular-nums">
+                <Clock className="h-3.5 w-3.5" />
+                <span>{readingTime} min</span>
+              </div>
             </div>
-            {blog.frontMatter.tags.length > 3 && (
-              <span className="text-muted-foreground">
-                &#43; {blog.frontMatter.tags.length - 3} more
-              </span>
-            )}
-          </>
-        )}
+            <div className="flex items-center text-primary opacity-0 -translate-x-2 transition-all duration-200 ease-out group-hover:opacity-100 group-hover:translate-x-0">
+              <span className="mr-1 font-semibold">Read</span>
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </div>
+          </div>
+        </div>
       </div>
-    </article>
+    </Link>
   );
 };

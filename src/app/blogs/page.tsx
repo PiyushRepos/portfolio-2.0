@@ -73,7 +73,7 @@ export default async function BlogsPage() {
       </div>
 
       <motion.div
-        className="space-y-8"
+        className="grid grid-cols-1 gap-6 md:grid-cols-2"
         variants={container}
         initial="hidden"
         animate="show"
@@ -82,9 +82,8 @@ export default async function BlogsPage() {
           const readingTime = calculateReadingTime(blog.content);
 
           return (
-            <motion.div key={blog.frontMatter.slug} variants={item}>
+            <motion.div key={blog.frontMatter.slug} variants={item} className="h-full">
               <BlogCard blog={blog} readingTime={readingTime} />
-              <hr className="border-border mt-8 border-t" />
             </motion.div>
           );
         })}

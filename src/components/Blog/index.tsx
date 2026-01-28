@@ -24,14 +24,15 @@ export default async function Blogs() {
         upperText="Latest Posts"
         description="Stay updated with my latest articles, tutorials, and insights on web development."
       />
-      <div className="flex flex-col gap-8">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {blogs.slice(0, 2).map((blog) => {
           const readingTime = calculateReadingTime(blog.content);
           return (
-            <div key={blog.frontMatter.slug}>
-              <BlogCard blog={blog} readingTime={readingTime} />
-              <hr className="border-border mt-8 border-t" />
-            </div>
+            <BlogCard
+              key={blog.frontMatter.slug}
+              blog={blog}
+              readingTime={readingTime}
+            />
           );
         })}
       </div>
