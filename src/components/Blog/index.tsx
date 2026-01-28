@@ -24,7 +24,7 @@ export default async function Blogs() {
         upperText="Latest Blogs"
         description="Stay updated with my latest articles, tutorials, and insights on web development."
       />
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         {blogs.slice(0, 2).map((blog) => {
           const readingTime = calculateReadingTime(blog.content);
           return (

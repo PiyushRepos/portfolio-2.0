@@ -73,7 +73,7 @@ export default async function BlogsPage() {
       </div>
 
       <motion.div
-        className="grid grid-cols-1 gap-6 md:grid-cols-2"
+        className="grid grid-cols-1 gap-4 md:grid-cols-2"
         variants={container}
         initial="hidden"
         animate="show"
@@ -89,13 +89,13 @@ export default async function BlogsPage() {
         })}
       </motion.div>
       <motion.div
-        className="flex flex-col gap-8 pt-10 pb-5"
+        className="flex flex-col gap-8 pt-8"
         variants={item}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
       >
-        <footer className="text-muted-foreground py-6 text-center text-sm">
+        <footer className="text-muted-foreground py-8 text-center text-sm">
           <p>
             &copy; {new Date().getFullYear()} Piyush Kumar. All rights reserved.
           </p>

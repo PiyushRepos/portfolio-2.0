@@ -19,9 +19,9 @@ export const BlogCard = ({
     >
       <div
         className={cn(
-          "relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card text-card-foreground",
+          "relative flex h-full flex-col overflow-hidden rounded-md border border-zinc-100 dark:border-zinc-800 bg-card text-card-foreground",
           "transition-all duration-200 ease-out",
-          "hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1"
+          "hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1"
         )}
       >
         <div className="relative aspect-[16/9] w-full overflow-hidden bg-muted">
@@ -51,7 +51,7 @@ export const BlogCard = ({
           <h3 className="mb-3 text-xl font-bold leading-tight tracking-tight text-balance group-hover:text-primary transition-colors duration-200">
             {blog.frontMatter.title}
           </h3>
-          <p className="mb-6 flex-1 text-sm text-muted-foreground text-pretty line-clamp-3">
+          <p className="mb-6 flex-1 text-sm text-muted-foreground text-pretty line-clamp-2">
             {blog.frontMatter.description}
           </p>
           <div className="mt-auto flex items-center justify-between border-t pt-4 text-xs text-muted-foreground">
