@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { calculateReadingTime, getAllBlogs } from "@/lib/blog";
-import { Link2Icon, LucideLink } from "lucide-react";
+import { ArrowRight, Link2Icon, LucideLink, NotebookText } from "lucide-react";
 import Link from "next/link";
 import Subheading from "../subheading";
 import { BlogCard } from "./blog-card";
@@ -20,11 +20,11 @@ export default async function Blogs() {
     <div>
       <Subheading
         text="Blogs"
-        icon={<LucideLink className="h-5 w-5" />}
-        upperText="Latest Posts"
+        icon={<NotebookText />}
+        upperText="Latest Blogs"
         description="Stay updated with my latest articles, tutorials, and insights on web development."
       />
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {blogs.slice(0, 2).map((blog) => {
           const readingTime = calculateReadingTime(blog.content);
           return (
@@ -36,9 +36,14 @@ export default async function Blogs() {
           );
         })}
       </div>
-      <Button className="mt-6 w-fit text-right" asChild variant="outline">
-        <Link href="/blogs">View All Blogs</Link>
-      </Button>
+      <div className="mt-8 flex justify-end">
+        <Button asChild variant="ghost" className="group text-muted-foreground hover:text-primary">
+          <Link href="/blogs">
+            View All Blogs
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </Button>
+      </div>
     </div>
   );
 }
