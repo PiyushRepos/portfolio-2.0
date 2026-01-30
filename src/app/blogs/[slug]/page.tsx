@@ -16,7 +16,13 @@ import {
   getBlogTOCBySlug,
 } from "@/lib/blog";
 import { cn } from "@/lib/utils";
-import { ArrowLeft, ArrowRight, CalendarDays, Clock, User2 } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  CalendarDays,
+  Clock,
+  User2,
+} from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -119,27 +125,27 @@ export default async function BlogContentPage({
             </Badge>
           ))}
         </div>
-        
+
         <h1 className="text-4xl font-extrabold tracking-tight text-balance lg:text-5xl">
           {blog.frontMatter.title}
         </h1>
 
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+        <div className="text-muted-foreground flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
           <div className="flex items-center gap-2">
             <User2 className="h-4 w-4" />
-            <span className="font-medium text-foreground">
+            <span className="text-foreground font-medium">
               {blog.frontMatter.author}
             </span>
           </div>
           <div className="flex items-center gap-2">
-             <CalendarDays className="h-4 w-4" />
-             <time dateTime={blog.frontMatter.date}>
+            <CalendarDays className="h-4 w-4" />
+            <time dateTime={blog.frontMatter.date}>
               {new Date(blog.frontMatter.date).toLocaleDateString("en-IN", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
               })}
-             </time>
+            </time>
           </div>
           <div className="flex items-center gap-2">
             <Clock className="h-4 w-4" />
@@ -154,7 +160,7 @@ export default async function BlogContentPage({
           <Image
             src={blog.frontMatter.coverImage}
             alt={blog.frontMatter.title}
-            className="aspect-[21/9] w-full object-cover"
+            className="aspect-auto w-full object-cover"
             width={1280}
             height={600}
             priority
@@ -186,7 +192,7 @@ export default async function BlogContentPage({
                               href={`#${item.id}`}
                               className={cn(
                                 "text-muted-foreground hover:text-foreground block rounded-md px-3 py-2 text-sm transition-colors",
-                                "hover:bg-accent focus:bg-accent outline-none"
+                                "hover:bg-accent focus:bg-accent outline-none",
                               )}
                             >
                               {item.text}
