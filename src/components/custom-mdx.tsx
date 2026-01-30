@@ -85,11 +85,11 @@ const components: MDXRemoteProps["components"] = {
       );
     }
 
-    let codeHTML = await codeToHtml(String(children), {
+    let codeHTML = await codeToHtml(String(children).trim(), {
       lang: props.className?.replace("language-", "") || "plaintext",
       theme: "github-dark",
       rootStyle:
-        "background-color: transparent; padding: 1rem; margin: 0; font-size: inherit; overflow: initial; line-height: 1.7;",
+        "background-color: transparent; padding: 1rem; margin: 0; font-size: inherit; overflow: initial; line-height: 2;",
     });
     return (
       <Card className="rounded-sm bg-[#171717] p-0">

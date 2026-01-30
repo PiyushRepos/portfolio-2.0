@@ -44,6 +44,8 @@ export default async function BlogsPage() {
     );
   }
 
+  console.log(blogs);
+
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -82,7 +84,11 @@ export default async function BlogsPage() {
           const readingTime = calculateReadingTime(blog.content);
 
           return (
-            <motion.div key={blog.frontMatter.slug} variants={item} className="h-full">
+            <motion.div
+              key={blog.frontMatter.slug}
+              variants={item}
+              className="h-full"
+            >
               <BlogCard blog={blog} readingTime={readingTime} />
             </motion.div>
           );

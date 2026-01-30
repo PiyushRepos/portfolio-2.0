@@ -1,0 +1,76 @@
+---
+title: "TCP Working: 3-Way Handshake & Reliable Communication"
+description: An in-depth explanation of how the Transmission Control Protocol (TCP) establishes reliable communication through the 3-way handshake process.
+slug: tcp-working-3-way-handshake-reliable-communication
+date: 2026-01-28
+author: Piyush Kumar
+coverImage: /blogs/tcp-working-3-way-handshake-reliable-communication-cover.png
+tags:
+  [
+    "TCP",
+    "Networking",
+    "Beginner Guide",
+    "chaicode",
+    "chaicodewebdevcohort",
+    "chaicodewebdevcohortjune2024",
+    "web development cohort",
+  ]
+draft: false
+---
+
+## Introduction
+
+The Transmission Control Protocol (TCP) is a fundamental protocol in the suite of internet protocols that ensures reliable communication between devices over a network. Unlike simpler protocols like UDP, TCP provides mechanisms to establish connections, guarantee data delivery, and maintain the order of packets. One of the key processes in TCP communication is the 3-way handshake, which establishes a connection between a client and a server before any data is exchanged. In this article, we will explore how TCP works, focusing on the 3-way handshake and its role in reliable communication.
+
+## What is TCP and Why is it Needed?
+
+TCP is a connection-oriented protocol that provides reliable, ordered, and error-checked delivery of data between applications running on hosts in a network. It is essential for applications that require guaranteed delivery of data, such as web browsing, email, and file transfers. TCP addresses several challenges in network communication, including packet loss, duplication, and out-of-order delivery.
+
+## The TCP 3-Way Handshake
+
+The TCP 3-way handshake is the process used to establish a reliable connection between a client and a server. It involves three steps: SYN, SYN-ACK, and ACK.
+
+### Step 1: SYN (Synchronize)
+
+The client initiates the connection by sending a SYN (synchronize) packet to the server. This packet contains an initial sequence number (ISN) that the client will use for the data it sends.
+
+### Step 2: SYN-ACK (Synchronize-Acknowledge)
+
+Upon receiving the SYN packet, the server responds with a SYN-ACK packet. This packet serves two purposes: it acknowledges the receipt of the client's SYN by including an acknowledgment number (client's ISN + 1), and it also includes the server's own SYN with its initial sequence number.
+
+### Step 3: ACK (Acknowledge)
+
+Finally, the client sends an ACK packet back to the server, acknowledging the receipt of the server's SYN-ACK. The acknowledgment number in this packet is the server's ISN + 1. At this point, the connection is established, and both parties can begin data transfer.
+
+## Data Transfer in TCP
+
+Once the connection is established through the 3-way handshake, data transfer can begin. TCP uses sequence numbers to keep track of the order of packets and ensure that data is delivered correctly. Each byte of data sent over a TCP connection is assigned a unique sequence number. The receiver acknowledges the receipt of data by sending back an acknowledgment number, which indicates the next expected sequence number.
+
+## Ensuring Reliability
+
+TCP employs several mechanisms to ensure reliable communication:
+
+- **Acknowledgments**: The receiver sends ACK packets to confirm the receipt of data.
+- **Retransmission**: If the sender does not receive an acknowledgment within a certain timeframe, it retransmits the lost packets.
+- **Flow Control**: TCP uses a sliding window mechanism to control the amount of data sent before receiving an acknowledgment, preventing overwhelming the receiver.
+- **Error Checking**: TCP includes checksums in its packets to detect errors in transmission.
+
+## Closing a TCP Connection
+
+When the data transfer is complete, either the client or server can initiate the connection termination process using a four-step handshake:
+
+1. **FIN**: The initiator sends a FIN (finish) packet to signal that it has finished sending data.
+2. **ACK**: The receiver acknowledges the FIN by sending an ACK packet.
+3. **FIN**: The receiver then sends its own FIN packet to indicate it has also finished sending data.
+4. **ACK**: The initiator acknowledges the receiver's FIN with an ACK packet, completing the connection termination.
+
+## Conclusion
+
+TCP is a robust protocol that ensures reliable communication over networks through its connection-oriented approach and mechanisms like the 3-way handshake. By establishing a connection before data transfer, using sequence numbers, acknowledgments, and retransmissions, TCP guarantees that data is delivered accurately and in order. Understanding how TCP works is essential for anyone involved in networking or web development, as it underpins much of the internet's functionality.
+
+## Further Reading
+
+- [TCP/IP Protocol Suite](https://www.cloudflare.com/learning/ddos/glossary/transmission-control-protocol-tcp/)
+- [How TCP Works](https://www.geeksforgeeks.org/how-tcp-works/)
+
+**Happy learning!**

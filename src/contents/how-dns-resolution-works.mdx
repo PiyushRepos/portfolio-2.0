@@ -1,0 +1,53 @@
+---
+title: How DNS Resolution Works
+description: An in-depth look at the DNS resolution process, explaining how domain names are translated into IP addresses to facilitate internet communication.
+slug: how-dns-resolution-works
+date: 2026-01-30
+author: Piyush Kumar
+coverImage: /blogs/how-dns-resolution-works-cover.png
+tags:
+  [
+    "DNS",
+    "Networking",
+    "Beginner Guide",
+    "chaicode",
+    "chaicodewebdevcohort",
+    "chaicodewebdevcohortjune2024",
+    "web development cohort",
+  ]
+draft: false
+---
+
+## Introduction
+
+The Domain Name System (DNS) is often referred to as the "phonebook of the internet." It translates human-friendly domain names (like www.example.com) into machine-friendly IP addresses (like, 192.0.2.1). This process, known as DNS resolution, is crucial for enabling users to access websites and online services easily. In this article, we will explore how DNS resolution works step-by-step.
+
+## The DNS Resolution Process
+
+When you enter a URL into your web browser, the DNS resolution process begins. Here’s a breakdown of the key steps involved:
+
+1. **Browser Cache Check**: The browser first checks its own cache to see if it has recently resolved the domain name. If it finds a valid entry, it uses that IP address to connect to the server.
+
+2. **Operating System Cache Check**: If the browser cache does not have the information, the request is passed to the operating system, which checks its own DNS cache for a recent resolution.
+
+3. **Recursive DNS Resolver Query**: If the OS cache does not have the information, it sends a query to a recursive DNS resolver (often provided by your ISP or a third-party service like Google DNS or Cloudflare). The resolver is responsible for finding the IP address associated with the domain name.
+
+4. **Root Name Server Query**: If the recursive resolver does not have the answer cached, it queries one of the root name servers. The root server responds with a referral to the appropriate Top-Level Domain (TLD) name server (e.g., .com, .org).
+
+5. **TLD Name Server Query**: The recursive resolver then queries the TLD name server, which responds with a referral to the authoritative name server for the specific domain.
+
+6. **Authoritative Name Server Query**: Finally, the recursive resolver queries the authoritative name server for the domain. This server holds the actual DNS records and responds with the IP address associated with the domain name.
+
+7. **Response to Client**: The recursive resolver sends the IP address back to the operating system, which then passes it to the browser. The browser can now establish a connection to the web server using the resolved IP address.
+
+## Conclusion
+
+DNS resolution is a complex but efficient process that allows users to access websites using easy-to-remember domain names. By understanding how DNS works, developers and IT professionals can better appreciate the underlying mechanisms that make the internet function smoothly.
+
+## Further Reading
+
+- [Understanding DNS Records](https://www.cloudflare.com/learning/dns/dns-records/)
+- [How the Internet Works](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/How_the_Internet_works)
+- [DNS Security Extensions (DNSSEC)](https://www.icann.org/resources/pages/dnssec-what-is-it-2019-03-05-en)
+
+Happy learning!
