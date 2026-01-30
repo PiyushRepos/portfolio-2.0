@@ -126,7 +126,7 @@ export default async function BlogContentPage({
           ))}
         </div>
 
-        <h1 className="text-4xl font-extrabold tracking-tight text-balance lg:text-5xl">
+        <h1 className="text-4xl leading-tight font-extrabold tracking-normal text-pretty lg:text-5xl">
           {blog.frontMatter.title}
         </h1>
 

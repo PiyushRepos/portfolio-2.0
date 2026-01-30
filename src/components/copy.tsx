@@ -3,8 +3,15 @@
 import { Copy, Check } from "lucide-react";
 import { useState } from "react";
 import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
 
-const CopyButton = ({ textToCopy }: { textToCopy: string }) => {
+const CopyButton = ({
+  textToCopy,
+  className,
+}: {
+  textToCopy: string;
+  className?: string;
+}) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -23,8 +30,10 @@ const CopyButton = ({ textToCopy }: { textToCopy: string }) => {
       aria-label="Copy to clipboard"
       size={"icon"}
       variant={"link"}
-      // light and dark mode support
-      className="absolute top-2 right-2 rounded-md bg-zinc-800/30 p-1 text-zinc-200 hover:bg-zinc-800/50"
+      className={cn(
+        "absolute top-2 right-2 rounded-md bg-zinc-800/30 p-1 text-zinc-200 hover:bg-zinc-800/50",
+        className,
+      )}
     >
       {copied ? (
         <Check className="size-3.5 text-green-500" />

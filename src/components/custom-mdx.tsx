@@ -60,7 +60,7 @@ const components: MDXRemoteProps["components"] = {
 
     return (
       <a
-        className="text-primary decoration-primary/30 hover:decoration-primary/60 underline underline-offset-4 transition-colors duration-200"
+        className="text-primary decoration-primary/50 hover:decoration-primary/95 underline underline-offset-4 transition-colors duration-200"
         target="_blank"
         rel="noopener noreferrer"
         {...props}
@@ -114,9 +114,12 @@ const components: MDXRemoteProps["components"] = {
     };
 
     return (
-      <pre {...props} className="relative overflow-hidden">
+      <pre {...props} className="group relative overflow-hidden">
         {props.children}
-        <CopyButton textToCopy={getTextFromChildren(props.children)} />
+        <CopyButton
+          className="opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          textToCopy={getTextFromChildren(props.children)}
+        />
       </pre>
     );
   },

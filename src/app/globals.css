@@ -164,15 +164,15 @@ ul > li {
 }
 
 .prose p {
-  @apply text-muted-foreground leading-7 [&:not(:first-child)]:mt-6;
+  @apply text-muted-foreground leading-7 not-first:mt-6;
 }
 
 .prose a {
-  @apply font-medium text-primary no-underline underline-offset-4 hover:underline;
+  @apply text-primary font-medium underline-offset-4;
 }
 
 .prose blockquote {
-  @apply mt-6 border-l-2 border-primary pl-6 italic text-muted-foreground;
+  @apply border-primary text-muted-foreground mt-6 border-l-2 pl-6 italic;
 }
 
 .prose ul > li::marker {
@@ -180,7 +180,7 @@ ul > li {
 }
 
 .prose code {
-  @apply relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold text-foreground;
+  @apply bg-muted text-foreground relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
 }
 
 .prose
