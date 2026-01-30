@@ -44,8 +44,6 @@ export default async function BlogsPage() {
     );
   }
 
-  console.log(blogs);
-
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
