@@ -8,6 +8,13 @@ import CopyButton from "./copy";
 import { Card } from "./ui/card";
 import Highlight from "./highlight";
 import { Link as LinkIcon } from "lucide-react";
+import {
+  FlexboxPlayground,
+  PropertyDemo,
+  FlexItemDemo,
+  ComparisonDemo,
+  SimpleFlexDemo,
+} from "./Blog/flexbox-playground";
 
 const components: MDXRemoteProps["components"] = {
   p: (props) => <p className="leading-7 text-pretty" {...props} />,
@@ -137,7 +144,7 @@ const components: MDXRemoteProps["components"] = {
   ),
   ul: (props) => <ul className="my-6 ml-6 list-disc [&>li]:mt-2" {...props} />,
   table: (props) => (
-    <div className="my-6 w-full overflow-x-auto rounded-lg border">
+    <div className="w-full overflow-x-auto rounded-lg border">
       <table className="w-full" {...props} />
     </div>
   ),
@@ -168,7 +175,15 @@ export function CustomMDX(props: { content: string; components?: any }) {
     <MDXRemote
       source={props.content}
       components={{
-        ...{ ...components, Highlight },
+        ...{
+          ...components,
+          Highlight,
+          FlexboxPlayground,
+          PropertyDemo,
+          FlexItemDemo,
+          ComparisonDemo,
+          SimpleFlexDemo,
+        },
         ...(props.components || {}),
       }}
       options={{

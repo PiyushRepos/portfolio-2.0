@@ -40,7 +40,7 @@ function Navbar() {
         <Link className="text-primary/90 hover:text-primary" href={"/#about"}>
           About
         </Link>
-        <ThemeToggler />
+        {/* <ThemeToggler /> */}
       </div>
     </nav>
   );

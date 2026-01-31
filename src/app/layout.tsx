@@ -106,6 +106,7 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="dark"
           disableTransitionOnChange={false}
+          enableSystem={false}
         >
           <ReactLenis root options={{ lerp: 0.085, orientation: "vertical" }}>
             <main>
