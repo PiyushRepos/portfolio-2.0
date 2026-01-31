@@ -6,6 +6,8 @@ import { codeToHtml } from "shiki";
 import remarkGfm from "remark-gfm";
 import CopyButton from "./copy";
 import { Card } from "./ui/card";
+import Highlight from "./highlight";
+import { Link as LinkIcon } from "lucide-react";
 
 const components: MDXRemoteProps["components"] = {
   p: (props) => <p className="leading-7 text-pretty" {...props} />,
@@ -40,11 +42,12 @@ const components: MDXRemoteProps["components"] = {
     if (href.startsWith("/")) {
       return (
         <Link
-          className="text-primary decoration-primary/30 hover:decoration-primary/60 underline underline-offset-4 transition-colors duration-200"
+          className="text-primary group decoration-primary/30 hover:decoration-primary/60 underline underline-offset-4 transition-colors duration-200"
           href={href}
           {...props}
         >
           {props.children}
+          <LinkIcon className="mb-1 ml-1 inline h-4 w-4 opacity-70 group-hover:opacity-100" />
         </Link>
       );
     }
@@ -59,12 +62,15 @@ const components: MDXRemoteProps["components"] = {
     }
 
     return (
-      <a
-        className="text-primary decoration-primary/50 hover:decoration-primary/95 underline underline-offset-4 transition-colors duration-200"
-        target="_blank"
-        rel="noopener noreferrer"
-        {...props}
-      />
+      <span className="group">
+        <a
+          className="text-primary decoration-primary/50 hover:decoration-primary/95 underline underline-offset-4 transition-colors duration-200"
+          target="_blank"
+          rel="noopener noreferrer"
+          {...props}
+        />
+        <LinkIcon className="mb-1 ml-1 inline h-4 w-4 opacity-70 group-hover:opacity-100" />
+      </span>
     );
   },
   code: async ({ children, ...props }) => {
@@ -161,7 +167,10 @@ export function CustomMDX(props: { content: string; components?: any }) {
   return (
     <MDXRemote
       source={props.content}
-      components={{ ...components, ...(props.components || {}) }}
+      components={{
+        ...{ ...components, Highlight },
+        ...(props.components || {}),
+      }}
       options={{
         mdxOptions: {
           remarkPlugins: [remarkGfm],
