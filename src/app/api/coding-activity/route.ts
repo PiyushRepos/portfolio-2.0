@@ -141,7 +141,7 @@ export async function GET() {
         // If last heartbeat is recent (within 20 mins), status is coding
         if (now - lastHeartbeat <= 20 * 60) {
           isCoding = true;
-          activeDuration = now - sessionStart;
+          activeDuration = lastHeartbeat - sessionStart;
         } else {
           isCoding = false;
         }
