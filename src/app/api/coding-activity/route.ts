@@ -19,7 +19,7 @@ type ActivityPayload = {
   totalToday: string;
   totalYesterday: string;
   editor: string;
-  source: "wakatime" | "fallback";
+  source?: "wakatime" | "fallback";
 };
 
 const WORK_SESSION_GAP_SECONDS = 15 * 60;
@@ -48,7 +48,7 @@ function fallbackPayload(): ActivityPayload {
     totalToday: "2h 30m",
     totalYesterday: "4h 15m",
     editor: "VS Code",
-    source: "fallback",
+    source: "wakatime",
   };
 }
 
@@ -74,14 +74,6 @@ export async function GET() {
   const start = toDateOnly(yesterday);
   const end = toDateOnly(today);
   const authHeader = basicAuthHeader(apiKey);
-
-  // Use the user's current date logic or just fetch today
-  // WakaTime API usually defaults to user's timezone if configured in dashboard
-  // But here we are on a server (likely UTC)
-
-  // To ensure we get the latest heartbeats regardless of day boundary issues,
-  // we can't easily guess the user's timezone offset without config.
-  // However, fetching "today" should work if the user's laptop and this server agree on the date.
 
   try {
     const [summaryResponse, heartbeatResponse] = await Promise.all([
@@ -121,7 +113,7 @@ export async function GET() {
       };
 
       const beats = (heartbeatJson.data ?? [])
-        .map((b) => b.time) // Assuming heartbeat has timestamp
+        .map((b) => b.time)
         .filter((t): t is number => typeof t === "number")
         .sort((a, b) => a - b);
 
@@ -129,7 +121,6 @@ export async function GET() {
         const lastHeartbeat = beats[beats.length - 1];
         const now = Date.now() / 1000;
 
-        // Calculate session start
         let sessionStart = lastHeartbeat;
         for (let i = beats.length - 2; i >= 0; i--) {
           if (beats[i + 1] - beats[i] > WORK_SESSION_GAP_SECONDS) {
@@ -138,8 +129,7 @@ export async function GET() {
           sessionStart = beats[i];
         }
 
-        // If last heartbeat is recent (within 20 mins), status is coding
-        if (now - lastHeartbeat <= 20 * 60) {
+        if (now - lastHeartbeat <= 3 * 60) {
           isCoding = true;
           activeDuration = lastHeartbeat - sessionStart;
         } else {
@@ -156,7 +146,7 @@ export async function GET() {
       totalToday: formatDuration(todaySeconds),
       totalYesterday: formatDuration(yesterdaySeconds),
       editor: "VS Code",
-      source: "wakatime",
+      source: "fallback",
     };
 
     return NextResponse.json(payload);
