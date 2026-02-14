@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Progress from "@/components/progress";
 import { ThemeProvider } from "@/components/theme-provider";
+import { CodingActivityProvider } from "@/hooks/use-coding-activity";
 import { ReactLenis } from "@/lib/lenis";
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
@@ -109,11 +110,13 @@ export default function RootLayout({
           enableSystem={false}
         >
           <ReactLenis root options={{ lerp: 0.085, orientation: "vertical" }}>
-            <main>
-              <Progress />
-              <Navbar />
-              {children}
-            </main>
+            <CodingActivityProvider>
+              <main>
+                <Progress />
+                <Navbar />
+                {children}
+              </main>
+            </CodingActivityProvider>
           </ReactLenis>
         </ThemeProvider>
       </body>

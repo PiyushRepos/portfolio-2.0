@@ -154,6 +154,10 @@ ul > li {
   @apply bg-transparent p-0;
 }
 
+.prose strong {
+  @apply text-foreground font-semibold;
+}
+
 .prose h1,
 .prose h2,
 .prose h3,
@@ -164,7 +168,7 @@ ul > li {
 }
 
 .prose p {
-  @apply text-muted-foreground leading-7 not-first:mt-6;
+  @apply leading-8 not-first:mt-6;
 }
 
 .prose a {
