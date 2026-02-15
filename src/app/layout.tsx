@@ -5,7 +5,6 @@ import { ReactLenis } from "@/lib/lenis";
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
-import { CodingActivityProvider } from "@/hooks/use-coding-activity";
 
 const ibmPlexSans = IBM_Plex_Sans({
   weight: ["100", "200", "300", "400", "500", "600", "700"],
@@ -109,13 +108,11 @@ export default function RootLayout({
           disableTransitionOnChange={false}
         >
           <ReactLenis root options={{ lerp: 0.085, orientation: "vertical" }}>
-            <CodingActivityProvider>
-              <main>
-                <Progress />
-                <Navbar />
-                {children}
-              </main>
-            </CodingActivityProvider>
+            <main>
+              <Progress />
+              <Navbar />
+              {children}
+            </main>
           </ReactLenis>
         </ThemeProvider>
       </body>

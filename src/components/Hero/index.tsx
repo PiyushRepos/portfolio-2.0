@@ -5,7 +5,6 @@ import { motion, Variants } from "motion/react";
 import { Button } from "../ui/button";
 import { socialLinks } from "./links";
 import Link from "next/link";
-import EditorActivity from "../EditorActivity";
 
 const variants: Variants = {
   hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
@@ -97,10 +96,6 @@ export default function Hero() {
               Download Resume
             </Button>
           </Link>
-        </motion.div>
-
-        <motion.div variants={variants}>
-          <EditorActivity />
         </motion.div>
 
         <div className="text-muted-foreground my-4 text-sm leading-relaxed font-semibold">
