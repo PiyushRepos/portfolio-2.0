@@ -8,6 +8,13 @@ import CopyButton from "./copy";
 import { Card } from "./ui/card";
 import Highlight from "./highlight";
 import { Link as LinkIcon } from "lucide-react";
+import {
+  FlexboxPlayground,
+  PropertyDemo,
+  FlexItemDemo,
+  ComparisonDemo,
+  SimpleFlexDemo,
+} from "./Blog/flexbox-playground";
 
 const components: MDXRemoteProps["components"] = {
   p: (props) => <p className="leading-7 text-pretty" {...props} />,
@@ -168,7 +175,15 @@ export function CustomMDX(props: { content: string; components?: any }) {
     <MDXRemote
       source={props.content}
       components={{
-        ...{ ...components, Highlight },
+        ...{
+          ...components,
+          Highlight,
+          FlexboxPlayground,
+          PropertyDemo,
+          FlexItemDemo,
+          ComparisonDemo,
+          SimpleFlexDemo,
+        },
         ...(props.components || {}),
       }}
       options={{
